@@ -404,6 +404,105 @@
       font-weight: 300;
     }
 
+    /* ── HOW IT WORKS ── */
+    .how {
+      background-color: var(--navy-dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 60px;
+      text-align: center;
+    }
+
+    .how-eyebrow {
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 16px;
+      font-family: 'Crimson Pro', serif;
+    }
+
+    .how h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .how-sub {
+      font-size: 17px;
+      color: var(--dim);
+      margin-bottom: 12px;
+      font-weight: 300;
+    }
+
+    .how > .gold-line { margin: 0 auto 50px; }
+
+    .how-steps {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 960px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* connector line between steps on desktop */
+    .how-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(16.66% + 14px);
+      right: calc(16.66% + 14px);
+      height: 1px;
+      background: linear-gradient(to right, var(--gold), var(--gold));
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .how-step {
+      flex: 1 1 260px;
+      max-width: 300px;
+      padding: 0 28px;
+      text-align: center;
+      position: relative;
+    }
+
+    .how-step-num {
+      width: 72px;
+      height: 72px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+      background-color: var(--navy-dark);
+      position: relative;
+      z-index: 1;
+    }
+
+    .how-step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .how-step p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
     /* ── DISCLAIMER ── */
     .disclaimer {
       background-color: var(--navy-dark);
@@ -445,6 +544,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .cover-grid { grid-template-columns: repeat(2, 1fr); }
+      .how-steps::before { display: none; }
     }
 
     @media (max-width: 700px) {
@@ -458,6 +558,9 @@
       .audience { padding: 60px 24px; }
       .audience h2 { font-size: 28px; }
       .audience-card { max-width: 100%; }
+      .how { padding: 60px 24px; }
+      .how h2 { font-size: 28px; }
+      .how-step { padding: 0 16px 40px; }
       footer { padding: 18px 24px; flex-direction: column; text-align: center; }
       .disclaimer { padding: 14px 24px; }
     }
@@ -591,7 +694,7 @@
 
       <div class="audience-card">
         <div class="status-badge">
-          <span class="card-flag"></span> Status
+          <span class="card-flag">🇺🇸</span> Status
         </div>
         <h3>U.S. Citizens</h3>
         <p>Know your full constitutional protections during police encounters, at work, at home, and in school. Your rights are broad — and knowing them matters.</p>
@@ -599,7 +702,7 @@
 
       <div class="audience-card">
         <div class="status-badge">
-          <span class="card-flag"></span> Status
+          <span class="card-flag">🟢</span> Status
         </div>
         <h3>Green Card Holders</h3>
         <p>Understand where your rights match citizens and where key differences exist. Immigration consequences can follow legal situations — know both systems.</p>
@@ -607,10 +710,40 @@
 
       <div class="audience-card">
         <div class="status-badge">
-          <span class="card-flag"></span> Status
+          <span class="card-flag">🔴</span> Status
         </div>
         <h3>Undocumented Immigrants</h3>
         <p>You have rights too. The U.S. Constitution protects everyone on American soil. Find out exactly what protections apply to you — regardless of status.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how">
+    <div class="how-eyebrow">How It Works</div>
+    <h2>Simple. Free. No sign-up needed.</h2>
+    <p class="how-sub"></p>
+    <div class="gold-line"></div>
+
+    <div class="how-steps">
+
+      <div class="how-step">
+        <div class="how-step-num">01</div>
+        <h3>Pick a Topic</h3>
+        <p>Choose the area of law that applies to your situation from our Resources page.</p>
+      </div>
+
+      <div class="how-step">
+        <div class="how-step-num">02</div>
+        <h3>Select Your Status</h3>
+        <p>Each topic has separate sections for citizens, green card holders, and undocumented immigrants.</p>
+      </div>
+
+      <div class="how-step">
+        <div class="how-step-num">03</div>
+        <h3>Read & Share</h3>
+        <p>All information is completely free. Print it, share it, and spread it to anyone who needs it.</p>
       </div>
 
     </div>
