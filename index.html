@@ -1,239 +1,352 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Understanding Your Rights</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Understanding Your Rights</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #112240;
+      --navy-dark: #071020;
+      --gold: #c9a84c;
+      --gold-light: #e0bf74;
+      --white: #ffffff;
+      --muted: #a8b8d0;
+      --dim: #6b7f96;
+      --border: #1e3a5f;
+    }
 
-      body {
-        font-family: 'Georgia', serif;
-        background-color: #0a1628;
-        color: white;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-      /* Top Navigation Bar */
-      header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 50px;
-        background-color: #0a1628;
-        border-bottom: 2px solid #c9a84c;
-      }
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      background-color: var(--navy);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
 
-      .nav-links {
-        display: flex;
-        gap: 30px;
-      }
+    /* ── HEADER ── */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 60px;
+      background-color: var(--navy);
+      border-bottom: 2px solid var(--gold);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-      .nav-links a {
-        color: #c9a84c;
-        text-decoration: none;
-        font-size: 15px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-      }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .logo span { color: var(--gold); }
 
-      .nav-links a:hover {
-        color: white;
-      }
+    nav {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-family: 'Crimson Pro', serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--white); }
 
-      .logo {
-        color: white;
-        font-size: 18px;
-        font-weight: bold;
-        letter-spacing: 1px;
-        text-align: right;
-        line-height: 1.4;
-      }
+    nav a.donate-btn {
+      background-color: var(--gold);
+      color: var(--navy);
+      padding: 8px 22px;
+      border-radius: 2px;
+      font-weight: 700;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    nav a.donate-btn:hover {
+      background-color: var(--white);
+      color: var(--navy);
+    }
 
-      .logo span {
-        color: #c9a84c;
-      }
+    /* ── HERO ── */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 40px 70px;
+      background: linear-gradient(to bottom, var(--navy) 0%, var(--navy-mid) 100%);
+      position: relative;
+    }
 
-      /* Hero Section */
-      .hero {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 80px 40px;
-        background: linear-gradient(
-          to bottom,
-          #0a1628,
-          #112240
-        );
-      }
+    /* subtle background texture */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 50%, rgba(201,168,76,0.04) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 20%, rgba(201,168,76,0.03) 0%, transparent 50%);
+      pointer-events: none;
+    }
 
-      .hero h1 {
-        font-size: 52px;
-        color: white;
-        margin-bottom: 10px;
-        letter-spacing: 2px;
-      }
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 20px;
+      font-family: 'Crimson Pro', serif;
+    }
 
-      .hero h1 span {
-        color: #c9a84c;
-      }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 58px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: 1px;
+      max-width: 760px;
+      margin-bottom: 8px;
+    }
+    .hero h1 span { color: var(--gold); }
 
-      .gold-line {
-        width: 80px;
-        height: 3px;
-        background-color: #c9a84c;
-        margin: 20px auto;
-      }
+    .gold-line {
+      width: 70px;
+      height: 3px;
+      background-color: var(--gold);
+      margin: 24px auto;
+    }
 
-      .hero p {
-        font-size: 18px;
-        color: #a8b8d0;
-        max-width: 600px;
-        line-height: 1.8;
-        margin-bottom: 40px;
-      }
+    .hero p {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 620px;
+      line-height: 1.85;
+      margin-bottom: 50px;
+      font-weight: 300;
+    }
 
-      /* Resources Button */
-      .resources-btn {
-        display: inline-block;
-        background-color: #c9a84c;
-        color: #0a1628;
-        padding: 15px 50px;
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: bold;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        border-radius: 3px;
-        transition: background-color 0.3s;
-        margin-bottom: 80px;
-      }
+    .hero-cta {
+      display: inline-block;
+      background-color: var(--gold);
+      color: var(--navy);
+      padding: 16px 54px;
+      text-decoration: none;
+      font-family: 'Crimson Pro', serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background-color 0.25s;
+      margin-bottom: 80px;
+    }
+    .hero-cta:hover { background-color: var(--white); }
 
-      .resources-btn:hover {
-        background-color: white;
-      }
+    /* ── TOPIC PILLS ── */
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
 
-      /* Topic Pills */
-      .topics {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-        margin-top: 10px;
-      }
+    .topic-pill {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 9px 22px;
+      border-radius: 22px;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-family: 'Crimson Pro', serif;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+    .topic-pill:hover {
+      background-color: var(--gold);
+      color: var(--navy);
+    }
 
-      .topic-pill {
-        border: 1px solid #c9a84c;
-        color: #c9a84c;
-        padding: 8px 20px;
-        border-radius: 20px;
-        font-size: 13px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-      }
+    /* ── MISSION STRIP ── */
+    .mission-strip {
+      background-color: var(--navy-dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 50px 60px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
 
-      /* Disclaimer */
-      .disclaimer {
-        background-color: #071020;
-        border-top: 1px solid #1e3a5f;
-        padding: 15px 50px;
-        text-align: center;
-        font-size: 12px;
-        color: #6b7f96;
-        line-height: 1.6;
-      }
+    .mission-item {
+      text-align: center;
+      max-width: 220px;
+    }
 
-      .disclaimer span {
-        color: #c9a84c;
-        font-weight: bold;
-      }
+    .mission-item .icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+    }
 
-      /* Footer */
-      footer {
-        background-color: #0a1628;
-        border-top: 2px solid #c9a84c;
-        padding: 20px 50px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 13px;
-        color: #6b7f96;
-      }
+    .mission-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--gold);
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
 
-      footer a {
-        color: #c9a84c;
-        text-decoration: none;
-      }
+    .mission-item p {
+      font-size: 15px;
+      color: var(--dim);
+      line-height: 1.65;
+      font-weight: 300;
+    }
 
-      footer a:hover {
-        color: white;
-      }
-    </style>
-  </head>
-  <body>
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background-color: var(--navy-dark);
+      border-top: 1px solid var(--border);
+      padding: 16px 60px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 1.7;
+      font-family: 'Crimson Pro', serif;
+    }
+    .disclaimer span {
+      color: var(--gold);
+      font-weight: 700;
+    }
 
-    <!-- Header -->
-    <header>
-      <div class="nav-links">
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="donate.html">Donate</a>
-      </div>
-      <div class="logo">
-        Understanding <span>Your Rights</span>
-      </div>
-    </header>
+    /* ── FOOTER ── */
+    footer {
+      background-color: var(--navy);
+      border-top: 2px solid var(--gold);
+      padding: 22px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--dim);
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: 'Crimson Pro', serif;
+    }
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: var(--white); }
 
-    <!-- Hero -->
-    <div class="hero">
-      <h1> You deserve to know your <span>Rights</span></h1>
-      <div class="gold-line"></div>
-      <p>
-        Every person, regardless of background, language, or 
-        circumstance, deserves to know the rights that protect them. 
-        We translate complex legal protections into plain, 
-        accessible language that everyday people can actually use. We aim to make knowledge accessible for all people regardless of status  
-      </p>
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      header { padding: 18px 24px; flex-direction: column; gap: 14px; }
+      .hero h1 { font-size: 36px; }
+      .hero { padding: 70px 24px 50px; }
+      .mission-strip { padding: 40px 24px; gap: 36px; }
+      footer { padding: 18px 24px; flex-direction: column; text-align: center; }
+      .disclaimer { padding: 14px 24px; }
+    }
+  </style>
+</head>
+<body>
 
-      <a href="resources.html" class="resources-btn">
-        Explore Resources
-      </a>
+  <!-- Header -->
+  <header>
+    <div class="logo">Understanding <span>Your Rights</span></div>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html" class="donate-btn">Donate</a>
+    </nav>
+  </header>
 
-      <div class="topics">
-        <div class="topic-pill">Police Encounters</div>
-        <div class="topic-pill">ICE Interactions</div>
-        <div class="topic-pill">Workers' Rights</div>
-        <div class="topic-pill">Housing</div>
-        <div class="topic-pill">Healthcare</div>
-        <div class="topic-pill">Education</div>
-      </div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">Community · Education · Empowerment</div>
+    <h1>You deserve to know your <span>Rights</span></h1>
+    <div class="gold-line"></div>
+    <p>
+      Every person, regardless of background, language, or circumstance,
+      deserves to know the rights that protect them. We translate complex
+      legal protections into plain, accessible language that everyday people
+      can actually use — for free, for everyone.
+    </p>
+    <a href="resources.html" class="hero-cta">Explore Resources</a>
+
+    <div class="topics">
+      <a href="resources.html" class="topic-pill">Police Encounters</a>
+      <a href="resources.html" class="topic-pill">ICE Interactions</a>
+      <a href="resources.html" class="topic-pill">Workers' Rights</a>
+      <a href="resources.html" class="topic-pill">Housing</a>
+      <a href="resources.html" class="topic-pill">Healthcare</a>
+      <a href="resources.html" class="topic-pill">Education</a>
     </div>
+  </section>
 
-    <!-- Disclaimer -->
-    <div class="disclaimer">
-      <span>Disclaimer:</span> The information provided on this website 
-      is for <strong>educational purposes only</strong> and does not 
-      constitute legal advice. For advice specific to your situation, 
-      please consult a licensed attorney.
+  <!-- Mission Strip -->
+  <section class="mission-strip">
+    <div class="mission-item">
+      <span class="icon">📖</span>
+      <h3>Know Your Rights</h3>
+      <p>Plain-language guides based on official legal sources, available in English and Spanish.</p>
     </div>
+    <div class="mission-item">
+      <span class="icon">🤝</span>
+      <h3>Community First</h3>
+      <p>Built by and for the community — we meet people where they are, on the ground.</p>
+    </div>
+    <div class="mission-item">
+      <span class="icon">⚖️</span>
+      <h3>For Everyone</h3>
+      <p>Regardless of immigration status, income, or background,knowledge belongs to all.</p>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-      <span>© 2026 Understanding Your Rights. All rights reserved.</span>
-      <div>
-        <a href="about.html">About</a> &nbsp;|&nbsp;
-        <a href="resources.html">Resources</a> &nbsp;|&nbsp;
-        <a href="contact.html">Contact</a> &nbsp;|&nbsp;
-        <a href="donate.html">Donate</a>
-      </div>
-    </footer>
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <span>Disclaimer:</span> The information provided on this website is for
+    <strong>educational purposes only</strong> and does not constitute legal advice.
+    For advice specific to your situation, please consult a licensed attorney.
+  </div>
 
-  </body>
+  <!-- Footer -->
+  <footer>
+    <span>© 2026 Understanding Your Rights.</span>
+    <div>
+      <a href="about.html">About</a> &nbsp;|&nbsp;
+      <a href="resources.html">Resources</a> &nbsp;|&nbsp;
+      <a href="contact.html">Contact</a> &nbsp;|&nbsp;
+      <a href="donate.html">Donate</a>
+    </div>
+  </footer>
+
+</body>
 </html>
