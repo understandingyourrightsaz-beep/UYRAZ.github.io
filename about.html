@@ -1,1 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — Understanding Your Rights</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #112240;
+      --navy-dark: #071020;
+      --gold: #c9a84c;
+      --gold-light: #e0bf74;
+      --white: #ffffff;
+      --muted: #a8b8d0;
+      --dim: #6b7f96;
+      --border: #1e3a5f;
+    }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      background-color: var(--navy);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 60px;
+      background-color: var(--navy);
+      border-bottom: 2px solid var(--gold);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--white);
+      line-height: 1.3;
+      text-decoration: none;
+    }
+    .logo span { color: var(--gold); }
+
+    nav {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-family: 'Crimson Pro', serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--white); }
+    nav a.donate-btn {
+      background-color: var(--gold);
+      color: var(--navy);
+      padding: 8px 22px;
+      border-radius: 2px;
+      font-weight: 700;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    nav a.donate-btn:hover { background-color: var(--white); color: var(--navy); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(to bottom, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 90px 60px 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 15% 60%, rgba(201,168,76,0.05) 0%, transparent 55%),
+                        radial-gradient(circle at 85% 25%, rgba(201,168,76,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .page-hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 20px;
+      font-family: 'Crimson Pro', serif;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.2;
+      max-width: 700px;
+      margin: 0 auto 8px;
+    }
+    .page-hero h1 span { color: var(--gold); }
+    .gold-line {
+      width: 70px;
+      height: 3px;
+      background-color: var(--gold);
+      margin: 24px auto 0;
+    }
+
+    /* ── SECTION SHARED ── */
+    .section-eyebrow {
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 14px;
+      font-family: 'Crimson Pro', serif;
+    }
+
+    /* ── MISSION ── */
+    .mission {
+      background: linear-gradient(to bottom, var(--navy-mid), var(--navy));
+      padding: 90px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .mission-text {}
+    .mission-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .mission-text h2 span { color: var(--gold); }
+    .mission-text .gold-line { margin: 20px 0 30px; }
+    .mission-text p {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .mission-text p:last-child { margin-bottom: 0; }
+
+    .mission-quote {
+      border-left: 3px solid var(--gold);
+      padding: 28px 36px;
+      background-color: var(--navy-dark);
+      border-radius: 0 4px 4px 0;
+    }
+    .mission-quote blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.65;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    .mission-quote blockquote span { color: var(--gold); }
+    .mission-quote cite {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dim);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    /* ── WHY WE DO IT ── */
+    .why {
+      background-color: var(--navy-dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 90px 60px;
+      text-align: center;
+    }
+    .why h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .why .gold-line { margin: 20px auto 50px; }
+    .why-body {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .why-body p {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.95;
+      font-weight: 300;
+      margin-bottom: 22px;
+    }
+    .why-body p:last-child { margin-bottom: 0; }
+    .why-body strong { color: var(--gold-light); font-weight: 600; }
+
+    .why-personal {
+      max-width: 780px;
+      margin: 48px auto 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.07), rgba(201,168,76,0.02));
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 4px;
+      padding: 36px 40px;
+      position: relative;
+    }
+    .why-personal::before {
+      content: '"';
+      position: absolute;
+      top: -18px;
+      left: 36px;
+      font-family: 'Playfair Display', serif;
+      font-size: 80px;
+      color: var(--gold);
+      line-height: 1;
+      opacity: 0.5;
+    }
+    .why-personal p {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      color: var(--white);
+      line-height: 1.75;
+      font-style: italic;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .why-personal .attribution {
+      font-family: 'Crimson Pro', serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    /* ── WHAT WE'VE DONE ── */
+    .done {
+      background: linear-gradient(to bottom, var(--navy), var(--navy-mid));
+      padding: 90px 60px;
+      text-align: center;
+    }
+    .done h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .done .gold-line { margin: 20px auto 50px; }
+
+    .done-stats {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 900px;
+      margin: 0 auto 60px;
+      flex-wrap: wrap;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .done-stat {
+      flex: 1 1 200px;
+      padding: 36px 28px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      background-color: var(--navy-dark);
+    }
+    .done-stat:last-child { border-right: none; }
+    .done-stat .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .done-stat .stat-label {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dim);
+      font-weight: 600;
+    }
+
+    .done-body {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .done-body p {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.95;
+      font-weight: 300;
+      margin-bottom: 22px;
+    }
+    .done-body p:last-child { margin-bottom: 0; }
+    .done-body strong { color: var(--gold-light); font-weight: 600; }
+
+    /* ── GOAL ── */
+    .goal {
+      background-color: var(--navy-dark);
+      border-top: 1px solid var(--border);
+      padding: 90px 60px;
+      text-align: center;
+    }
+    .goal h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .goal .gold-line { margin: 20px auto 50px; }
+    .goal-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto 60px;
+    }
+    .goal-pillar {
+      background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--gold);
+      border-radius: 4px;
+      padding: 36px 28px;
+      text-align: left;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .goal-pillar:hover { transform: translateY(-4px); border-top-color: var(--gold-light); }
+    .goal-pillar .pillar-icon {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 18px;
+    }
+    .goal-pillar h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .goal-pillar p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .goal-closing {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .goal-closing p {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--white);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 36px;
+    }
+    .goal-closing p span { color: var(--gold); }
+    .goal-cta {
+      display: inline-block;
+      background-color: var(--gold);
+      color: var(--navy);
+      padding: 16px 54px;
+      text-decoration: none;
+      font-family: 'Crimson Pro', serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background-color 0.25s;
+    }
+    .goal-cta:hover { background-color: var(--white); }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background-color: var(--navy-dark);
+      border-top: 1px solid var(--border);
+      padding: 16px 60px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 1.7;
+      font-family: 'Crimson Pro', serif;
+    }
+    .disclaimer span { color: var(--gold); font-weight: 700; }
+
+    /* ── FOOTER ── */
+    footer {
+      background-color: var(--navy);
+      border-top: 2px solid var(--gold);
+      padding: 22px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--dim);
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: 'Crimson Pro', serif;
+    }
+    footer a { color: var(--gold); text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
+    footer a:hover { color: var(--white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .mission { grid-template-columns: 1fr; gap: 48px; padding: 60px 40px; }
+      .goal-pillars { grid-template-columns: 1fr 1fr; }
+      .done-stats { flex-direction: column; }
+      .done-stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .done-stat:last-child { border-bottom: none; }
+    }
+    @media (max-width: 700px) {
+      header { padding: 18px 24px; flex-direction: column; gap: 14px; }
+      .page-hero { padding: 70px 24px 50px; }
+      .page-hero h1 { font-size: 36px; }
+      .mission { padding: 60px 24px; }
+      .mission-text h2 { font-size: 30px; }
+      .why { padding: 60px 24px; }
+      .why h2 { font-size: 30px; }
+      .why-personal { padding: 28px 24px; }
+      .done { padding: 60px 24px; }
+      .done h2 { font-size: 30px; }
+      .goal { padding: 60px 24px; }
+      .goal h2 { font-size: 30px; }
+      .goal-pillars { grid-template-columns: 1fr; }
+      footer { padding: 18px 24px; flex-direction: column; text-align: center; }
+      .disclaimer { padding: 14px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="index.html" class="logo">Understanding <span>Your Rights</span></a>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html" class="donate-btn">Donate</a>
+    </nav>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-eyebrow">Our Story · Our Mission · Our Community</div>
+    <h1>About <span>Understanding Your Rights</span></h1>
+    <div class="gold-line"></div>
+  </section>
+
+  <!-- Mission -->
+  <div style="background: linear-gradient(to bottom, var(--navy-mid), var(--navy));">
+    <div class="mission">
+      <div class="mission-text">
+        <div class="section-eyebrow">Who We Are</div>
+        <h2>Built on one <span>simple belief.</span></h2>
+        <div class="gold-line"></div>
+        <p>Understanding Your Rights is a community-driven nonprofit built on one simple belief: that every person, regardless of background, language, or circumstance, deserves to know the rights that protect them.</p>
+        <p>We aim to translate complex legal protections into plain, accessible language that everyday people can actually use. Our work spans six core areas of life — police encounters, ICE interactions, workers' rights, housing, healthcare, and education — and our resources are available to anyone and everyone.</p>
+      </div>
+      <div class="mission-quote">
+        <blockquote>"Knowledge is a powerful tool — dare I say <span>the most powerful tool</span> a person could possess."</blockquote>
+        <cite>— Understanding Your Rights</cite>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why We Do It -->
+  <section class="why">
+    <div class="section-eyebrow">Why We Do It</div>
+    <h2>The gap is not accidental.</h2>
+    <div class="gold-line"></div>
+    <div class="why-body">
+      <p>Legal rights education is one of the most <strong>consistently overlooked forms of literacy</strong> in this country. People immigrate to build better lives. People work long hours to provide for their families. People raise children, go through hardships, and chase opportunity — and in the middle of all of that, they are rarely told what the law actually entitles them to.</p>
+      <p>We live in a moment of real turmoil in the United States, and that turmoil creates fertile ground for exploitation. When people do not know their rights, others — employers, landlords, institutions — can and do take advantage of that ignorance. Knowledge is used to exploit the uneducated and take from those who are already on their last leg.</p>
+      <p>So we ask: <strong>why not level the playing field?</strong> Greed, exploitation, and corruption are not new things in life, but an uneducated population makes it far easier to act on them. We are here to change that.</p>
+    </div>
+    <div class="why-personal">
+      <p>I've seen families firsthand get exploited because they don't know better. Families getting threatened or paid less because they are immigrants. These people are human too — they are our neighbors, our coworkers, our friends, sometimes even our own families. To many people this is a reality, but this doesn't have to be the case.</p>
+      <div class="attribution">— A Note from Our Founders</div>
+    </div>
+  </section>
+
+  <!-- What We've Done -->
+  <section class="done">
+    <div class="section-eyebrow">What We've Done</div>
+    <h2>On the ground in our community.</h2>
+    <div class="gold-line"></div>
+
+    <div class="done-stats">
+      <div class="done-stat">
+        <span class="stat-num">6</span>
+        <span class="stat-label">Areas of Law</span>
+      </div>
+      <div class="done-stat">
+        <span class="stat-num">2</span>
+        <span class="stat-label">Languages</span>
+      </div>
+      <div class="done-stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Free to All</span>
+      </div>
+      <div class="done-stat">
+        <span class="stat-num">∞</span>
+        <span class="stat-label">People Who Deserve This</span>
+      </div>
+    </div>
+
+    <div class="done-body">
+      <p>To date, we have been on the ground in our community, <strong>distributing educational pamphlets</strong> directly to the people who need them most. We have material in both English and Spanish. These materials are aimed to be clear, accurate, and based on official legal sources.</p>
+      <p>But we are not content to stop there. Our next phase is more personal — moving beyond pamphlets and into <strong>direct community engagement</strong>, building relationships, and expanding as much as we can. The goal is not just to hand someone a piece of paper; it is to make sure they feel heard and equipped to deal with whatever hardships life may throw at them.</p>
+    </div>
+  </section>
+
+  <!-- Goal -->
+  <section class="goal">
+    <div class="section-eyebrow">Where We're Going</div>
+    <h2>Our end goal.</h2>
+    <div class="gold-line"></div>
+
+    <div class="goal-pillars">
+      <div class="goal-pillar">
+        <span class="pillar-icon">🛡️</span>
+        <h3>Safety Through Knowledge</h3>
+        <p>We want everyone to know the protections entitled to them — to keep themselves and their families safe from exploitation and injustice.</p>
+      </div>
+      <div class="goal-pillar">
+        <span class="pillar-icon">🗣️</span>
+        <h3>Confidence to Act</h3>
+        <p>We want to build a city where residents feel safe exercising their rights, where no one is silenced by ignorance of the law.</p>
+      </div>
+      <div class="goal-pillar">
+        <span class="pillar-icon">🤝</span>
+        <h3>A Cohesive Community</h3>
+        <p>Education is a public good. A confident community is a cohesive one — stronger neighborhoods, stronger families, stronger cities.</p>
+      </div>
+    </div>
+
+    <div class="goal-closing">
+      <p>"We are here to rally this community around <span>knowledge</span> — because an educated community is a stronger community."</p>
+      <a href="resources.html" class="goal-cta">Explore Our Resources</a>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <span>Disclaimer:</span> The information provided on this website is for
+    <strong>educational purposes only</strong> and does not constitute legal advice.
+    For advice specific to your situation, please consult a licensed attorney.
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <span>© 2026 Understanding Your Rights. All rights reserved.</span>
+    <div>
+      <a href="about.html">About</a> &nbsp;|&nbsp;
+      <a href="resources.html">Resources</a> &nbsp;|&nbsp;
+      <a href="contact.html">Contact</a> &nbsp;|&nbsp;
+      <a href="donate.html">Donate</a>
+    </div>
+  </footer>
+
+</body>
+</html>
