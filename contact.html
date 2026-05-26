@@ -408,7 +408,7 @@
         <div class="section-eyebrow">Direct Contact</div>
         <h2>Reach us directly.</h2>
         <div class="gold-line"></div>
-        <p>You can reach us directly by email or phone. We try to respond within 24–48 hours.</p>
+        <p>You can reach either of our founders directly by email or phone. We try to respond within 24–48 hours.</p>
 
         <div class="contact-cards">
 
@@ -511,9 +511,11 @@
   </footer>
 
   <script>
-    function handleSubmit() {
+    async function handleSubmit() {
       const fname = document.getElementById('fname').value.trim();
+      const lname = document.getElementById('lname').value.trim();
       const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value || 'Contact Form Message';
       const message = document.getElementById('message').value.trim();
 
       if (!fname || !email || !message) {
@@ -521,17 +523,36 @@
         return;
       }
 
-      // Build mailto link and open it
-      const subject = document.getElementById('subject').value || 'Contact Form Message';
-      const lname = document.getElementById('lname').value.trim();
-      const body = `Name: ${fname} ${lname}\nEmail: ${email}\n\n${message}`;
-      const mailtoLink = `mailto:okeovien@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoLink;
+      const btn = document.querySelector('.form-submit');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
 
-      // Show success message
-      document.getElementById('contact-form').style.opacity = '0.4';
-      document.getElementById('contact-form').style.pointerEvents = 'none';
-      document.getElementById('form-success').style.display = 'block';
+      try {
+        const response = await fetch('https://formspree.io/f/xbdbzwpg', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: `${fname} ${lname}`,
+            email: email,
+            subject: subject,
+            message: message
+          })
+        });
+
+        if (response.ok) {
+          document.getElementById('contact-form').style.opacity = '0.4';
+          document.getElementById('contact-form').style.pointerEvents = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        } else {
+          alert('Something went wrong. Please try emailing us directly at okeovien@gmail.com');
+          btn.textContent = 'Send Message';
+          btn.disabled = false;
+        }
+      } catch (err) {
+        alert('Something went wrong. Please try emailing us directly at okeovien@gmail.com');
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+      }
     }
   </script>
 
