@@ -1,1 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donate — Understanding Your Rights</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #112240;
+      --navy-dark: #071020;
+      --gold: #c9a84c;
+      --gold-light: #e0bf74;
+      --white: #ffffff;
+      --muted: #a8b8d0;
+      --dim: #6b7f96;
+      --border: #1e3a5f;
+    }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      background-color: var(--navy);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 60px;
+      background-color: var(--navy);
+      border-bottom: 2px solid var(--gold);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--white);
+      line-height: 1.3;
+      text-decoration: none;
+    }
+    .logo span { color: var(--gold); }
+    nav { display: flex; gap: 36px; align-items: center; }
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-family: 'Crimson Pro', serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--white); }
+    nav a.donate-btn {
+      background-color: var(--gold);
+      color: var(--navy);
+      padding: 8px 22px;
+      border-radius: 2px;
+      font-weight: 700;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    nav a.donate-btn:hover { background-color: var(--white); color: var(--navy); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(to bottom, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 90px 60px 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 15% 60%, rgba(201,168,76,0.05) 0%, transparent 55%),
+                        radial-gradient(circle at 85% 25%, rgba(201,168,76,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .page-hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 20px;
+      font-family: 'Crimson Pro', serif;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.2;
+      max-width: 700px;
+      margin: 0 auto 8px;
+    }
+    .page-hero h1 span { color: var(--gold); }
+    .page-hero p {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+    .gold-line {
+      width: 70px;
+      height: 3px;
+      background-color: var(--gold);
+      margin: 24px auto;
+    }
+
+    /* ── IMPACT STRIP ── */
+    .impact-strip {
+      background-color: var(--navy-dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 60px;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .impact-item {
+      flex: 1 1 200px;
+      max-width: 260px;
+      text-align: center;
+      padding: 0 32px;
+      border-right: 1px solid var(--border);
+    }
+    .impact-item:last-child { border-right: none; }
+    .impact-item .impact-icon { font-size: 26px; display: block; margin-bottom: 10px; }
+    .impact-item p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .impact-item strong { color: var(--gold-light); font-weight: 600; }
+
+    /* ── DONATE SECTION ── */
+    .donate-section {
+      background: linear-gradient(to bottom, var(--navy-mid), var(--navy));
+      padding: 90px 60px;
+      text-align: center;
+      flex: 1;
+    }
+    .donate-section .section-eyebrow {
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 14px;
+      font-family: 'Crimson Pro', serif;
+    }
+    .donate-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .donate-section > p {
+      font-size: 17px;
+      color: var(--dim);
+      margin-bottom: 12px;
+      font-weight: 300;
+    }
+
+    /* ── DONATE CARDS ── */
+    .donate-cards {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      max-width: 800px;
+      margin: 50px auto 0;
+      flex-wrap: wrap;
+    }
+
+    .donate-card {
+      flex: 1 1 320px;
+      max-width: 360px;
+      background-color: var(--navy-dark);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 40px 36px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .donate-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background-color: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .donate-card:hover::before { transform: scaleX(1); }
+    .donate-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
+    .donate-card .card-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+    .venmo-logo { background-color: #008CFF; }
+    .paypal-logo { background-color: #003087; }
+
+    .donate-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--white);
+    }
+    .donate-card p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .donate-card .handle {
+      font-size: 13px;
+      letter-spacing: 1px;
+      color: var(--dim);
+      font-family: 'Crimson Pro', serif;
+    }
+
+    .donate-btn-link {
+      display: inline-block;
+      background-color: var(--gold);
+      color: var(--navy);
+      padding: 14px 40px;
+      text-decoration: none;
+      font-family: 'Crimson Pro', serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      margin-top: 8px;
+      transition: background-color 0.25s;
+      width: 100%;
+    }
+    .donate-btn-link:hover { background-color: var(--white); }
+
+    /* ── NOTE ── */
+    .donate-note {
+      max-width: 600px;
+      margin: 50px auto 0;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px;
+      padding: 24px 32px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+    .donate-note strong { color: var(--gold-light); font-weight: 600; }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background-color: var(--navy-dark);
+      border-top: 1px solid var(--border);
+      padding: 16px 60px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 1.7;
+      font-family: 'Crimson Pro', serif;
+    }
+    .disclaimer span { color: var(--gold); font-weight: 700; }
+
+    /* ── FOOTER ── */
+    footer {
+      background-color: var(--navy);
+      border-top: 2px solid var(--gold);
+      padding: 22px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--dim);
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: 'Crimson Pro', serif;
+    }
+    footer a { color: var(--gold); text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
+    footer a:hover { color: var(--white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      header { padding: 18px 24px; flex-direction: column; gap: 14px; }
+      .page-hero { padding: 70px 24px 50px; }
+      .page-hero h1 { font-size: 36px; }
+      .impact-strip { padding: 36px 24px; gap: 28px; }
+      .impact-item { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 28px; }
+      .impact-item:last-child { border-bottom: none; }
+      .donate-section { padding: 60px 24px; }
+      .donate-section h2 { font-size: 30px; }
+      .donate-cards { flex-direction: column; align-items: center; }
+      footer { padding: 18px 24px; flex-direction: column; text-align: center; }
+      .disclaimer { padding: 14px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="index.html" class="logo">Understanding <span>Your Rights</span></a>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html" class="donate-btn">Donate</a>
+    </nav>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-eyebrow">Support Our Mission</div>
+    <h1>Help us <span>level the playing field.</span></h1>
+    <div class="gold-line"></div>
+    <p>Every dollar goes toward getting legal rights education into the hands of the people who need it most — free, accessible, and in plain language.</p>
+  </section>
+
+  <!-- Impact Strip -->
+  <div class="impact-strip">
+    <div class="impact-item">
+      <span class="impact-icon">📄</span>
+      <p><strong>Pamphlets printed</strong> and distributed directly in the community</p>
+    </div>
+    <div class="impact-item">
+      <span class="impact-icon">🌐</span>
+      <p>Resources available in <strong>English and Spanish</strong> at no cost</p>
+    </div>
+    <div class="impact-item">
+      <span class="impact-icon">🤝</span>
+      <p>100% community-driven — <strong>no one profits</strong> from this work</p>
+    </div>
+  </div>
+
+  <!-- Donate Section -->
+  <section class="donate-section">
+    <div class="section-eyebrow">Choose a Method</div>
+    <h2>Make a donation.</h2>
+    <p>Any amount helps. No account required on your end.</p>
+    <div class="gold-line"></div>
+
+    <div class="donate-cards">
+
+      <!-- Venmo -->
+      <div class="donate-card">
+        <div class="card-logo venmo-logo">💙</div>
+        <h3>Venmo</h3>
+        <p>Fast, free, and no fees. Tap below to open Venmo and send any amount you'd like.</p>
+        <span class="handle">@UnderstandingYourRightsAZ</span>
+        <a href="https://www.venmo.com/u/UnderstandingYourRightsAZ" target="_blank" class="donate-btn-link">Donate via Venmo</a>
+      </div>
+
+      <!-- PayPal -->
+      <div class="donate-card">
+        <div class="card-logo paypal-logo">🅿️</div>
+        <h3>PayPal</h3>
+        <p>Prefer PayPal? Use the link below to send a donation securely. No PayPal account needed.</p>
+        <span class="handle">paypal.me/UYRAZ</span>
+        <a href="https://paypal.me/UYRAZ" target="_blank" class="donate-btn-link">Donate via PayPal</a>
+      </div>
+
+    </div>
+
+    <div class="donate-note">
+      <strong>Note:</strong> Understanding Your Rights is a community-driven nonprofit. Donations are used entirely to fund printing, outreach, and educational materials. If you have questions about your donation, contact us at <strong>oren@understandingyourrights.org</strong>.
+    </div>
+
+  </section>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <span>Disclaimer:</span> The information provided on this website is for
+    <strong>educational purposes only</strong> and does not constitute legal advice.
+    For advice specific to your situation, please consult a licensed attorney.
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <span>© 2026 Understanding Your Rights. All rights reserved.</span>
+    <div>
+      <a href="about.html">About</a> &nbsp;|&nbsp;
+      <a href="resources.html">Resources</a> &nbsp;|&nbsp;
+      <a href="contact.html">Contact</a> &nbsp;|&nbsp;
+      <a href="donate.html">Donate</a>
+    </div>
+  </footer>
+
+</body>
+</html>
