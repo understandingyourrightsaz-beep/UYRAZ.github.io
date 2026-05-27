@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources — Understanding Your Rights</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #112240;
+    --navy-dark: #071020;
+    --gold: #c9a84c;
+    --gold-light: #e0bf74;
+    --white: #ffffff;
+    --muted: #a8b8d0;
+    --dim: #6b7f96;
+    --border: #1e3a5f;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    background-color: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 60px;
+    background-color: var(--navy);
+    border-bottom: 2px solid var(--gold);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--white);
+    line-height: 1.3;
+    text-decoration: none;
+  }
+  .logo span { color: var(--gold); }
+
+  nav {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+  nav a {
+    color: var(--gold);
+    text-decoration: none;
+    font-family: 'Crimson Pro', serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--white); }
+  nav a.donate-btn {
+    background-color: var(--gold);
+    color: var(--navy);
+    padding: 8px 22px;
+    border-radius: 2px;
+    font-weight: 700;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  nav a.donate-btn:hover { background-color: var(--white); color: var(--navy); }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    background: linear-gradient(to bottom, var(--navy-dark) 0%, var(--navy-mid) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 60px 52px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(201,168,76,0.04) 0%, transparent 60%),
+                      radial-gradient(circle at 80% 20%, rgba(201,168,76,0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .page-hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .page-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .page-hero h1 span { color: var(--gold); }
+  .gold-line {
+    width: 70px; height: 3px;
+    background-color: var(--gold);
+    margin: 22px auto 20px;
+  }
+  .page-hero p {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* ── SECTION NAV ── */
+  .section-nav {
+    position: sticky;
+    top: 66px;
+    z-index: 100;
+    background-color: var(--navy-dark);
+    border-bottom: 2px solid var(--gold);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .section-nav::-webkit-scrollbar { display: none; }
+  .section-nav ul {
+    list-style: none;
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    white-space: nowrap;
+  }
+  .section-nav a {
+    display: block;
+    padding: 0.85rem 1.1rem;
+    color: var(--dim);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s, border-color 0.2s;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    font-family: 'Crimson Pro', serif;
+  }
+  .section-nav a:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  /* ── LAYOUT ── */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  /* ── SECTION ── */
+  .rights-section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .rights-section:last-child { border-bottom: none; }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--border);
+    letter-spacing: -0.04em;
+    margin-top: -0.1rem;
+    user-select: none;
+  }
+
+  .section-title-group {}
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+  }
+  .section-desc {
+    font-size: 16px;
+    color: var(--dim);
+    margin-top: 6px;
+    font-weight: 300;
+    max-width: 55ch;
+    line-height: 1.6;
+  }
+
+  /* ── GUIDE CARDS GRID ── */
+  .guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .guide-card {
+    background-color: var(--navy-dark);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 26px 24px;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .guide-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background-color: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .guide-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+  .guide-card:hover::before { transform: scaleX(1); }
+  .guide-card:hover .guide-arrow { color: var(--gold-light); transform: translateX(3px); }
+
+  .guide-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--dim);
+    margin-bottom: 10px;
+    display: block;
+    font-weight: 700;
+  }
+  .guide-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+  .guide-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    transition: color 0.2s, transform 0.2s;
+  }
+  .guide-arrow svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(7,16,32,0.85);
+    z-index: 500;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.open {
+    display: flex;
+    animation: fadeIn 0.2s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .modal {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--gold);
+    border-radius: 4px;
+    max-width: 680px;
+    width: 100%;
+    position: relative;
+    margin: auto;
+    animation: slideUp 0.25s ease;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(24px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--dim);
+    font-size: 1.2rem;
+    transition: color 0.2s, border-color 0.2s;
+    line-height: 1;
+  }
+  .modal-close:hover { color: var(--gold); border-color: var(--gold); }
+
+  .modal-tag {
+    background-color: var(--gold);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    display: inline-block;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .modal-body { padding: 1.5rem 2.5rem 2.5rem; }
+
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    padding-right: 2rem;
+  }
+
+  .modal-steps {
+    list-style: none;
+    counter-reset: steps;
+  }
+  .modal-steps li {
+    counter-increment: steps;
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--muted);
+    font-weight: 300;
+  }
+  .modal-steps li:last-child { border-bottom: none; }
+  .modal-steps li::before {
+    content: counter(steps);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.6;
+  }
+
+  .modal-disclaimer {
+    margin-top: 1.5rem;
+    padding: 14px 16px;
+    background: var(--navy-dark);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    font-size: 13px;
+    color: var(--dim);
+    line-height: 1.55;
+  }
+  .modal-disclaimer strong {
+    color: var(--gold);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── DISCLAIMER BAR ── */
+  .disclaimer-bar {
+    background-color: var(--navy-dark);
+    border-top: 1px solid var(--border);
+    padding: 16px 60px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--dim);
+    line-height: 1.7;
+  }
+  .disclaimer-bar span { color: var(--gold); font-weight: 700; }
+
+  /* ── FOOTER ── */
+  footer {
+    background-color: var(--navy);
+    border-top: 2px solid var(--gold);
+    padding: 22px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--dim);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer a {
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  footer a:hover { color: var(--white); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    main { padding: 0 32px; }
+    header { padding: 18px 32px; }
+  }
+  @media (max-width: 700px) {
+    header { padding: 16px 20px; flex-direction: column; gap: 12px; }
+    .page-hero { padding: 48px 24px 40px; }
+    main { padding: 0 20px; }
+    .section-header { grid-template-columns: 1fr; gap: 0.4rem; }
+    .section-number { display: none; }
+    .guides-grid { grid-template-columns: 1fr; }
+    .modal-body { padding: 1.2rem 1.2rem 2rem; }
+    .disclaimer-bar, footer { padding: 14px 20px; }
+    footer { flex-direction: column; text-align: center; }
+    .section-nav { top: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">Understanding <span>Your Rights</span></a>
+  <nav>
+    <a href="about.html">About</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+    <a href="donate.html" class="donate-btn">Donate</a>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-eyebrow">Community · Education · Empowerment</div>
+  <h1>Know Your <span>Rights</span></h1>
+  <div class="gold-line"></div>
+  <p>Plain-language guides to the legal protections every person carries — regardless of background, status, or circumstance.</p>
+</section>
+
+<!-- SECTION NAV -->
+<nav class="section-nav" aria-label="Jump to section">
+  <ul>
+    <li><a href="#police">Police</a></li>
+    <li><a href="#ice">ICE &amp; Immigration</a></li>
+    <li><a href="#workers">Workers' Rights</a></li>
+    <li><a href="#housing">Housing</a></li>
+    <li><a href="#healthcare">Healthcare</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- 01 POLICE -->
+  <section class="rights-section" id="police">
+    <div class="section-header">
+      <div class="section-number">01</div>
+      <div class="section-title-group">
+        <span class="section-label">Section One</span>
+        <h2 class="section-title">Police Encounters</h2>
+        <p class="section-desc">What to say, what to do, and what you're never required to give up — during stops, searches, and arrests.</p>
+      </div>
+    </div>
+    <div class="guides-grid" id="police-grid"></div>
+  </section>
+
+  <!-- 02 ICE -->
+  <section class="rights-section" id="ice">
+    <div class="section-header">
+      <div class="section-number">02</div>
+      <div class="section-title-group">
+        <span class="section-label">Section Two</span>
+        <h2 class="section-title">ICE &amp; Immigration</h2>
+        <p class="section-desc">Your rights at the door, at the border, and everywhere in between — and how to protect your family.</p>
+      </div>
+    </div>
+    <div class="guides-grid" id="ice-grid"></div>
+  </section>
+
+  <!-- 03 WORKERS -->
+  <section class="rights-section" id="workers">
+    <div class="section-header">
+      <div class="section-number">03</div>
+      <div class="section-title-group">
+        <span class="section-label">Section Three</span>
+        <h2 class="section-title">Workers' Rights</h2>
+        <p class="section-desc">Federal and state law protections for every worker — whether or not you're a citizen.</p>
+      </div>
+    </div>
+    <div class="guides-grid" id="workers-grid"></div>
+  </section>
+
+  <!-- 04 HOUSING -->
+  <section class="rights-section" id="housing">
+    <div class="section-header">
+      <div class="section-number">04</div>
+      <div class="section-title-group">
+        <span class="section-label">Section Four</span>
+        <h2 class="section-title">Housing</h2>
+        <p class="section-desc">From lockouts to evictions — know the protections that keep a roof over your family's head.</p>
+      </div>
+    </div>
+    <div class="guides-grid" id="housing-grid"></div>
+  </section>
+
+  <!-- 05 HEALTHCARE -->
+  <section class="rights-section" id="healthcare">
+    <div class="section-header">
+      <div class="section-number">05</div>
+      <div class="section-title-group">
+        <span class="section-label">Section Five</span>
+        <h2 class="section-title">Healthcare</h2>
+        <p class="section-desc">Understand your bills, your coverage, and your right to care — without getting lost in the system.</p>
+      </div>
+    </div>
+    <div class="guides-grid" id="healthcare-grid"></div>
+  </section>
+
+  <!-- 06 EDUCATION -->
+  <section class="rights-section" id="education">
+    <div class="section-header">
+      <div class="section-number">06</div>
+      <div class="section-title-group">
+        <span class="section-label">Section Six</span>
+        <h2 class="section-title">Education</h2>
+        <p class="section-desc">Every child has the right to a public education. Here's how to protect it.</p>
+      </div>
+    </div>
+    <div class="guides-grid" id="education-grid"></div>
+  </section>
+
+</main>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer-bar">
+  <span>Disclaimer:</span> The information provided on this website is for <strong>educational purposes only</strong> and does not constitute legal advice. For advice specific to your situation, please consult a licensed attorney.
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Understanding Your Rights. All rights reserved.</span>
+  <div>
+    <a href="about.html">About</a> &nbsp;|&nbsp;
+    <a href="resources.html">Resources</a> &nbsp;|&nbsp;
+    <a href="contact.html">Contact</a> &nbsp;|&nbsp;
+    <a href="donate.html">Donate</a>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <div id="modal-tag" class="modal-tag"></div>
+    <div class="modal-body">
+      <h2 class="modal-title" id="modal-title"></h2>
+      <ol class="modal-steps" id="modal-steps"></ol>
+      <div class="modal-disclaimer">
+        <strong>Important Note</strong>
+        This guide is based on federal law and general legal principles. State laws vary. This is education, not legal advice — if you are facing a legal situation, contact an attorney or legal aid organization.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA = {
+  police: {
+    label: "Police Encounters",
+    guides: [
+      {
+        title: "How to behave during a traffic stop",
+        steps: [
+          "Pull over safely and promptly to the right side of the road. Turn off your engine and turn on your interior lights if it's dark.",
+          "Keep your hands visible on the steering wheel. Do not reach for documents until the officer asks.",
+          "When asked, calmly provide your driver's license, registration, and proof of insurance. You are required to provide these.",
+          "You have the right to remain silent beyond providing identifying documents. You may say: 'I am exercising my right to remain silent.'",
+          "Do not argue, resist, or make sudden movements. Even if you believe the stop is unlawful, comply and challenge it in court later.",
+          "If you want to record the interaction, you generally have the right to do so as long as you do not interfere with the officer's duties.",
+          "After the stop, write down everything you remember — officer's name, badge number, patrol car number, and what was said."
+        ]
+      },
+      {
+        title: "How to invoke your right to remain silent",
+        steps: [
+          "The Fifth Amendment gives you the right not to incriminate yourself. This applies to everyone, regardless of immigration status.",
+          "To invoke this right, say clearly: 'I am invoking my right to remain silent.' You must actually say it — staying quiet alone may not be enough.",
+          "Once invoked, stop answering questions. Do not explain, justify, or fill silences. Silence cannot be used against you.",
+          "You may be required to provide your name in some states (stop-and-identify states). Beyond that, you do not have to answer.",
+          "Politely but firmly repeat: 'I am not answering questions without a lawyer present.'",
+          "Do not believe statements that things will 'go easier' if you talk. That is a common pressure tactic.",
+          "Your invocation stands for the entire encounter unless you voluntarily restart the conversation."
+        ]
+      },
+      {
+        title: "How to refuse a search legally",
+        steps: [
+          "You have the right under the Fourth Amendment to refuse consent to a search of your person, car, or home.",
+          "Say clearly and calmly: 'I do not consent to a search.' Do not physically resist — state your refusal verbally only.",
+          "An officer can still search if they have a warrant, probable cause (for a car), or certain emergency circumstances — but your refusal is on record.",
+          "If they proceed over your objection, do not physically interfere. Repeat: 'I do not consent to this search.'",
+          "For a home, police generally need a warrant. Ask: 'Do you have a warrant?' You do not have to open the door without one.",
+          "Document everything after: what was searched, what was taken, officer names and badge numbers.",
+          "Evidence found during an illegal search may be suppressed in court — your refusal helps build that case."
+        ]
+      },
+      {
+        title: "How to behave during an arrest",
+        steps: [
+          "Do not resist arrest, even if you believe it is unlawful. Resisting can result in additional charges and physical harm.",
+          "Say clearly: 'I am invoking my right to remain silent and I want a lawyer.' Then stay silent.",
+          "You may ask: 'Am I being arrested or am I free to go?' Officers must answer this.",
+          "Do not sign any documents or make any statements without an attorney present.",
+          "You have the right to make a phone call. Request this right as soon as you arrive at the station.",
+          "Try to remember and later write down: officer names, badge numbers, the time and location, and any witnesses.",
+          "Contact a lawyer or legal aid organization as soon as possible."
+        ]
+      },
+      {
+        title: "How to file a complaint against an officer",
+        steps: [
+          "Document everything immediately: officer's name, badge number, patrol car number, date, time, location, and exactly what happened.",
+          "Gather any evidence: photos, videos, witness names and contact information.",
+          "File a complaint with the department's Internal Affairs Division or Office of Professional Standards. Most departments accept complaints online, by mail, or in person.",
+          "You can also file a complaint with your city or county's civilian oversight board if one exists.",
+          "For civil rights violations, you may file a complaint with the U.S. Department of Justice Civil Rights Division.",
+          "Consider contacting the ACLU or a civil rights attorney, especially for serious violations.",
+          "Keep copies of everything you submit and note confirmation numbers or case IDs you receive."
+        ]
+      },
+      {
+        title: "How to request a lawyer",
+        steps: [
+          "Once in custody, say these exact words: 'I want a lawyer.' Say it clearly and do not keep talking.",
+          "All questioning must stop once you request a lawyer. If it continues, repeat your request.",
+          "If you cannot afford a lawyer, say: 'I cannot afford a lawyer. I am requesting a court-appointed attorney.'",
+          "The Sixth Amendment guarantees you the right to counsel in criminal proceedings. This right applies once you are formally charged.",
+          "Do not sign anything, make any statements, or agree to any lineups before speaking with your attorney.",
+          "Legal aid organizations provide free representation. Ask the court or jail staff for their contact information.",
+          "If you are denied a lawyer or questioning continues after your request, document this for your attorney."
+        ]
+      }
+    ]
+  },
+  ice: {
+    label: "ICE & Immigration",
+    guides: [
+      {
+        title: "How to respond if ICE comes to your door",
+        steps: [
+          "You do not have to open the door. Ask through the door: 'Do you have a warrant signed by a judge?' ICE administrative warrants do NOT require you to open the door.",
+          "If they claim to have a warrant, ask them to slide it under the door or hold it to a window. Check if it is signed by a federal judge (not just an ICE supervisor) and has your correct name and address.",
+          "If there is no judicial warrant, you can say: 'I do not consent to entry.' You do not have to let them in.",
+          "If they force their way in anyway, do not physically resist. Say clearly: 'I do not consent to this entry.'",
+          "Remain silent. You have the right not to answer questions about your immigration status.",
+          "Say: 'I want to speak with a lawyer before answering any questions.' Then stop talking.",
+          "Contact an immigration attorney or legal aid organization as soon as possible."
+        ]
+      },
+      {
+        title: "How to check if a warrant is valid",
+        steps: [
+          "There are two types of warrants. An administrative warrant (Form I-200 or I-205) is issued by DHS/ICE — this does NOT give officers the right to enter your home.",
+          "A judicial warrant is signed by a federal judge and says 'United States District Court' or similar. This type can legally require entry.",
+          "Ask the officer to slide the warrant under the door or hold it up to the window before opening.",
+          "Check: Is it signed by a judge (not an ICE officer or supervisor)? Does it have your correct full name? Does it have your correct address?",
+          "If any of these are wrong or missing, the warrant may be invalid and you are not required to open the door.",
+          "Even with a valid judicial warrant, you still have the right to remain silent and request an attorney.",
+          "Document the warrant details or photograph it through the window if possible."
+        ]
+      },
+      {
+        title: "How to invoke your right to silence with ICE",
+        steps: [
+          "You have the Fifth Amendment right to remain silent with any federal agent, including ICE, regardless of your immigration status.",
+          "Say clearly: 'I am exercising my right to remain silent.' Then stop speaking.",
+          "Do not answer questions about where you were born, how you entered the country, or your immigration status.",
+          "Do not show documents other than what may be legally required in your specific state.",
+          "Repeat as needed: 'I want to speak with an immigration lawyer before answering any questions.'",
+          "Do not sign any documents without a lawyer reviewing them first — signing can waive important rights.",
+          "Stay calm and keep your hands visible. Do not run or resist physically."
+        ]
+      },
+      {
+        title: "How to prepare a safety plan for your family",
+        steps: [
+          "Designate a trusted person (friend, family member, or neighbor) who can care for your children if you are detained.",
+          "Grant that person legal authorization through a childcare power of attorney. Many legal aid offices provide free templates.",
+          "Keep important documents (birth certificates, passports, immigration papers, financial records) in a safe, accessible place — and give copies to your trusted contact.",
+          "Teach every family member a family emergency code word and a meeting place.",
+          "Write down and memorize key phone numbers: family contacts, your attorney, and a local immigrant legal aid hotline.",
+          "Identify an immigration attorney before an emergency occurs. Keep their number saved and posted at home.",
+          "If you have a Know Your Rights card from an advocacy organization, carry it at all times."
+        ]
+      },
+      {
+        title: "How to find an immigration attorney quickly",
+        steps: [
+          "Contact your local legal aid society — many offer free or low-cost immigration legal services. Search 'legal aid [your city]' to find your nearest office.",
+          "Call the National Immigration Legal Services hotline or search CLINIC (Catholic Legal Immigration Network) for accredited representatives near you.",
+          "Many nonprofit organizations — such as RAICES, NILC, AILA's pro bono programs — offer emergency legal assistance.",
+          "If detained, ask jail staff for a list of free legal service providers. Detained individuals have the right to legal representation, though the government is not required to provide it.",
+          "Avoid 'notarios' or immigration consultants who are not licensed attorneys — they cannot legally provide immigration advice and often cause serious harm.",
+          "Ask any attorney you contact whether they handle emergency detention cases and what their fees are before agreeing to anything.",
+          "Keep your attorney's number memorized and written on a card in your wallet."
+        ]
+      }
+    ]
+  },
+  workers: {
+    label: "Workers' Rights",
+    guides: [
+      {
+        title: "How to report wage theft",
+        steps: [
+          "Wage theft includes unpaid overtime, minimum wage violations, illegal deductions, and not being paid at all. It is illegal under the Fair Labor Standards Act (FLSA).",
+          "Gather documentation: pay stubs, time records, texts or emails about hours worked, and any written agreements about your pay.",
+          "File a complaint with the U.S. Department of Labor's Wage and Hour Division (WHD) at dol.gov or by calling 1-866-487-9243. Complaints can be filed anonymously.",
+          "You can also file a complaint with your state's labor agency, which may have stronger protections.",
+          "Retaliation for filing a wage complaint is illegal. Document any adverse actions taken against you after filing.",
+          "You may be entitled to back pay plus an equal amount in damages, plus attorney's fees if you sue.",
+          "Consider contacting a workers' rights organization or employment attorney — many take wage theft cases on contingency (no upfront cost)."
+        ]
+      },
+      {
+        title: "How to file an EEOC discrimination complaint",
+        steps: [
+          "The Equal Employment Opportunity Commission (EEOC) handles workplace discrimination based on race, color, religion, sex, national origin, age, disability, or genetic information.",
+          "You must file an EEOC charge before you can sue your employer in federal court. There are strict deadlines — usually 180 or 300 days from the discriminatory act.",
+          "File online at publicportal.eeoc.gov or by calling 1-800-669-4000. Filing is free.",
+          "Describe what happened, when it happened, who was involved, and why you believe it was discriminatory.",
+          "Gather evidence: emails, performance reviews, witness names, your employment history, and documentation of the discriminatory actions.",
+          "After filing, the EEOC will notify your employer and may investigate or attempt mediation.",
+          "If the EEOC does not resolve your case, they will issue a 'Right to Sue' letter allowing you to file a lawsuit within 90 days."
+        ]
+      },
+      {
+        title: "How to report unsafe working conditions to OSHA",
+        steps: [
+          "The Occupational Safety and Health Administration (OSHA) protects workers' right to a safe workplace. Complaints can be filed by any worker, documented or undocumented.",
+          "File a complaint online at osha.gov, by phone at 1-800-321-6742, or by mail to your regional OSHA office. You can request that your name be kept confidential.",
+          "Describe the hazard specifically: what it is, where it is, who is at risk, and how long the condition has existed.",
+          "You have the right to refuse work that poses imminent danger of serious injury or death. Tell your supervisor in writing if possible.",
+          "OSHA prohibits retaliation. If your employer retaliates for filing a complaint, file a retaliation complaint with OSHA within 30 days.",
+          "OSHA must inspect within a reasonable time and inform you of the results. You can participate in the inspection.",
+          "Keep copies of all communications with your employer and OSHA throughout the process."
+        ]
+      },
+      {
+        title: "How to apply for unemployment benefits",
+        steps: [
+          "Unemployment insurance (UI) is administered by each state. You must file in the state where you worked, not where you live.",
+          "File as soon as possible after losing your job — most states have a waiting week and benefits are not paid retroactively before your filing date.",
+          "Go to your state's workforce agency website and look for 'File for Unemployment' or 'UI Benefits.' Most states now accept online applications.",
+          "You will need: Social Security Number, employment history for the past 18 months, wages earned, reason for separation, and contact information.",
+          "Generally, you qualify if you were laid off, your hours were significantly cut, or you were fired without serious misconduct. Quitting usually disqualifies you unless there was 'good cause.'",
+          "You must certify eligibility weekly and actively search for work. Keep records of your job search activities.",
+          "If denied, you have the right to appeal. File your appeal before the deadline listed on your denial notice."
+        ]
+      },
+      {
+        title: "How to document workplace retaliation",
+        steps: [
+          "Retaliation occurs when an employer takes adverse action against you for a protected activity: filing a complaint, reporting violations, organizing, or taking medical leave.",
+          "Start a private written log immediately. Record dates, times, what was said or done, who was present, and how it differed from previous treatment.",
+          "Save all relevant emails, texts, performance reviews, and written communications to a personal device or account.",
+          "Note any changes after your protected activity: sudden negative performance reviews, schedule changes, demotion, increased scrutiny, or termination.",
+          "Report the retaliation in writing to HR and keep a copy. Even if you don't expect HR to help, this creates an official record.",
+          "File a retaliation complaint with the EEOC, OSHA, the Department of Labor, or the relevant agency depending on the type of protected activity.",
+          "Consult an employment attorney — retaliation claims often have short filing deadlines."
+        ]
+      },
+      {
+        title: "How to read your pay stub",
+        steps: [
+          "Your pay stub must show gross pay (total before deductions), all deductions, and net pay (what you actually take home).",
+          "Gross pay = hours worked × hourly rate (or your salary amount for the period). Verify this matches what you were told.",
+          "Check deductions: federal income tax, state income tax, Social Security (6.2%), Medicare (1.45%), health insurance, and any retirement contributions.",
+          "Overtime pay (hours over 40/week) must be paid at 1.5× your regular rate under federal law. Check that overtime hours and pay are correctly listed.",
+          "If you see an unfamiliar deduction, ask your employer in writing for an explanation. You have the right to understand every deduction.",
+          "Compare your year-to-date (YTD) totals periodically to catch errors early.",
+          "If anything does not add up, contact your state's Department of Labor or a workers' rights organization."
+        ]
+      }
+    ]
+  },
+  housing: {
+    label: "Housing",
+    guides: [
+      {
+        title: "How to deal with an illegal lockout",
+        steps: [
+          "An illegal lockout occurs when a landlord locks you out, removes your belongings, shuts off utilities, or removes doors/windows without going through the legal eviction process.",
+          "Document everything immediately: take photos or videos of the changed locks, removed belongings, or any notices left.",
+          "Call your local police non-emergency line. Explain that you have been illegally locked out by your landlord. In most states, police can require the landlord to restore access.",
+          "Contact a local tenant legal aid organization or housing court. Most cities have emergency procedures for lockout situations.",
+          "In many states, you can sue your landlord for actual damages, statutory penalties (often 1–3 months' rent), and attorney's fees for an illegal lockout.",
+          "Do not pay rent or sign any new agreements under duress. Do not allow the landlord to pressure you into leaving.",
+          "File a complaint with your local housing or building authority and keep records of every action you take."
+        ]
+      },
+      {
+        title: "How to report a landlord for habitability violations",
+        steps: [
+          "Every tenant has the right to a habitable home — working heat, plumbing, electricity, no pest infestations, and a structurally safe building.",
+          "Document all deficiencies in writing with photos and dates. Send a written repair request to your landlord by certified mail and keep a copy.",
+          "If the landlord does not respond within a reasonable time (usually 30 days, or 24–72 hours for emergencies), contact your local housing or building department to file a complaint.",
+          "A housing inspector may visit and issue citations requiring the landlord to make repairs within a set timeframe.",
+          "In many states, you may be able to withhold rent, place rent in escrow, or 'repair and deduct' (hire a contractor and deduct the cost from rent) if conditions are serious.",
+          "Your landlord cannot legally retaliate against you for reporting habitability violations. Document any suspicious changes in treatment after you complain.",
+          "Contact a tenant rights organization or legal aid for help navigating your specific state's procedures."
+        ]
+      },
+      {
+        title: "How to document repair requests properly",
+        steps: [
+          "Always make repair requests in writing, even if you have already made a verbal request. Written records protect you legally.",
+          "Send repair requests via certified mail, email, or a platform that creates a timestamp. Do not rely on text messages alone if possible.",
+          "Be specific: describe the problem, the location, when you first noticed it, and any safety or health impact.",
+          "Keep a copy of every request and the landlord's response (or non-response). Note the date you sent it and the date a response (if any) was received.",
+          "Take dated photographs or video of the problem before and after any repair attempt.",
+          "If the landlord responds but doesn't fix the problem, send a follow-up letter noting the issue remains unresolved.",
+          "This paper trail is essential if you need to involve a housing inspector, withhold rent legally, or pursue legal action."
+        ]
+      },
+      {
+        title: "How to fight an eviction notice",
+        steps: [
+          "An eviction notice is not an eviction order. Do not leave your home just because you receive a notice. You have legal rights throughout the process.",
+          "Read the notice carefully: Is it a pay-or-quit notice, a cure-or-quit notice, or an unconditional quit? The type determines your options and deadlines.",
+          "Respond within the timeframe listed on the notice. If it is a pay-or-quit notice and you can pay, do so in writing and get a receipt.",
+          "If you dispute the eviction, contact a tenant legal aid organization immediately. Many offer emergency assistance for eviction cases.",
+          "Attend every court date. If you miss your court date, the landlord will almost certainly win by default.",
+          "In court, you may raise defenses: the landlord failed to maintain the unit, the eviction is retaliatory, proper notice was not given, or you have paid.",
+          "Even if you lose, you have time before a marshal or sheriff enforces the order. Use that time to find housing and resources."
+        ]
+      },
+      {
+        title: "How to get your security deposit back",
+        steps: [
+          "Most states require landlords to return your security deposit within 14–30 days of your move-out date, along with an itemized list of any deductions.",
+          "Before moving out, document the condition of the entire unit with dated photos and video. Do a written walkthrough checklist if possible.",
+          "Give your landlord written notice of your forwarding address before you move. Send it by certified mail.",
+          "Normal wear and tear (small scuffs, faded paint) cannot legally be deducted. Only actual damages beyond normal use can be deducted.",
+          "If the landlord misses the deadline or makes improper deductions, send a written demand letter requesting the full deposit within a specific number of days.",
+          "If they do not respond, file a claim in small claims court. In many states, you can sue for double or triple the withheld amount as a penalty.",
+          "Bring all your documentation: your lease, move-in and move-out photos, correspondence, and any receipts."
+        ]
+      },
+      {
+        title: "How to file a fair housing complaint with HUD",
+        steps: [
+          "The Fair Housing Act prohibits discrimination in housing based on race, color, national origin, religion, sex, familial status, or disability.",
+          "Discrimination can include: refusing to rent or sell, setting different terms, making discriminatory statements, or refusing to make reasonable accommodations for disabilities.",
+          "File a complaint online at hud.gov/fairhousing, by phone at 1-800-669-9777 (TTY: 1-800-927-9275), or in person at a HUD office. Filing is free.",
+          "You must file within one year of the discriminatory act. Do not wait.",
+          "Describe what happened in detail: dates, names, what was said or done, and any witnesses.",
+          "HUD will investigate and may attempt conciliation. If the case has merit and is not resolved, HUD may pursue it or you may file a civil lawsuit.",
+          "You can also file with your state or local fair housing agency, which may have broader protections."
+        ]
+      }
+    ]
+  },
+  healthcare: {
+    label: "Healthcare",
+    guides: [
+      {
+        title: "How to read a medical bill",
+        steps: [
+          "Request an itemized bill from your provider. A summary bill does not list individual charges — the itemized version does, and you are entitled to one.",
+          "Match each line item (procedure code and description) against your Explanation of Benefits (EOB) from your insurer, which shows what was billed, what was approved, and what you owe.",
+          "Look for common errors: duplicate charges, charges for services not received, upcoding (a more expensive service than what was performed), and facility fees that were not disclosed.",
+          "Look up any unfamiliar billing codes (CPT codes) at the AMA website or by calling your provider's billing department.",
+          "If anything is unclear or seems wrong, call your provider's billing department and ask for a line-by-line explanation.",
+          "Compare the billed amount with your insurance's allowed amount. You should only owe your share of the allowed amount, not the full billed amount.",
+          "Document all calls: date, time, name of the person you spoke to, and what they said."
+        ]
+      },
+      {
+        title: "How to dispute a surprise medical bill",
+        steps: [
+          "A surprise bill often results from receiving care from an out-of-network provider at an in-network facility (e.g., an ER anesthesiologist). The No Surprises Act (federal law) limits these bills for many situations.",
+          "Request an itemized bill and your EOB. Identify whether the provider was in-network or out-of-network and whether the service qualifies for No Surprises Act protections.",
+          "File a complaint with the federal No Surprises Help Desk at 1-800-985-3059 or at cms.gov/nosurprises if you believe you were improperly billed.",
+          "Contact your insurer to dispute the claim. Ask them to reprocess the claim under the No Surprises Act or applicable state law.",
+          "Write a formal dispute letter to the provider's billing department. Include your account number, the date of service, what you believe is incorrect, and your requested resolution.",
+          "Most providers have a financial assistance or charity care program. Ask specifically for their charity care application — many hospitals are required to have one.",
+          "Contact your state insurance commissioner if your insurer is unresponsive — they regulate insurer conduct."
+        ]
+      },
+      {
+        title: "How to apply for Medicaid",
+        steps: [
+          "Medicaid is a federal-state program providing free or low-cost health coverage for people with limited income. Eligibility varies by state.",
+          "Apply through your state's Medicaid agency (search '[your state] Medicaid application') or at Healthcare.gov. You can apply anytime — there is no open enrollment period.",
+          "You will need: proof of identity, proof of residency, Social Security numbers (if applicable), proof of income (pay stubs, tax returns), and information about other insurance.",
+          "Undocumented individuals generally do not qualify for full Medicaid, but emergency Medicaid may cover emergency care. Children may qualify through CHIP regardless of parent status.",
+          "After applying, a decision must be made within 45 days (90 days for disability-based cases). If approved, coverage may be retroactive up to 3 months.",
+          "If denied, you have the right to appeal. Request a fair hearing within the timeframe listed on your denial notice.",
+          "Local health departments and community health centers can help you complete your application for free."
+        ]
+      },
+      {
+        title: "How to appeal an insurance denial",
+        steps: [
+          "When your insurer denies a claim or prior authorization, they must provide a written denial with the specific reason and your right to appeal.",
+          "Read the denial letter carefully. Note the deadline for your internal appeal — usually 180 days from the date of denial.",
+          "File an internal appeal with your insurer. Include: a letter explaining why the denial is wrong, supporting medical documentation, and a letter from your doctor stating the service is medically necessary.",
+          "If your internal appeal is denied, you have the right to an independent external review by a third-party reviewer not affiliated with your insurer.",
+          "For urgent situations, expedited appeals (72-hour decisions) are available. Request one in writing and by phone.",
+          "File a complaint with your state insurance commissioner if your insurer violates its obligations during the appeals process.",
+          "Patient advocates and social workers at your hospital can help you navigate the appeals process at no cost."
+        ]
+      },
+      {
+        title: "How to request your medical records",
+        steps: [
+          "Under HIPAA, you have the right to access your medical records. Providers must fulfill your request within 30 days (with one 30-day extension if they notify you).",
+          "Submit a written request to your provider's medical records or health information management department. Many providers also have an online patient portal.",
+          "Providers may charge a reasonable fee for copies but cannot deny access because you cannot pay.",
+          "You can request records in electronic format (such as a PDF or a file compatible with your health app) — the provider must provide electronic records electronically if they maintain them that way.",
+          "If your request is denied, the provider must give you a written denial explaining why and your rights to appeal.",
+          "You can also request that providers correct inaccurate information in your records — submit an 'amendment request' in writing.",
+          "If a provider refuses or ignores your request, file a complaint with the HHS Office for Civil Rights at hhs.gov/ocr."
+        ]
+      },
+      {
+        title: "How to find a free or low-cost clinic",
+        steps: [
+          "Federally Qualified Health Centers (FQHCs) provide healthcare on a sliding-scale fee based on income — you pay only what you can afford. Find one at findahealthcenter.hrsa.gov.",
+          "Free clinics are nonprofits providing free care to uninsured individuals. Search 'free clinic [your city]' or use the National Association of Free & Charitable Clinics at nafcclinics.org.",
+          "Community health centers are often located in underserved neighborhoods and serve patients regardless of immigration status or ability to pay.",
+          "Many hospitals are required to have a charity care program that can cover bills for qualifying low-income patients — ask the billing department directly.",
+          "For dental care, look for dental school clinics, which provide supervised care at significantly reduced costs.",
+          "For mental health, community mental health centers and FQHCs often provide behavioral health services on a sliding scale.",
+          "Call 211 (national helpline) for local health and social services referrals including free clinics in your area."
+        ]
+      },
+      {
+        title: "How to set up a payment plan with a hospital",
+        steps: [
+          "Before agreeing to any payment plan, apply for the hospital's financial assistance or charity care program — you may qualify for significant bill reduction or forgiveness.",
+          "Call the billing department and ask specifically: 'Do you have a financial assistance program?' and 'Can I get an itemized bill before we discuss payment?'",
+          "Negotiate the bill itself before negotiating payments. Hospitals often accept significantly less than the billed amount, especially for uninsured patients.",
+          "Ask for an interest-free payment plan. Many hospitals are required to offer interest-free options to qualifying patients.",
+          "Get any payment agreement in writing before making your first payment.",
+          "Do not put medical debt on a credit card unless you have exhausted all other options — medical debt is treated differently and is often negotiable in ways that credit card debt is not.",
+          "If you are struggling, a hospital patient advocate or social worker can help you navigate financial assistance programs at no cost."
+        ]
+      }
+    ]
+  },
+  education: {
+    label: "Education",
+    guides: [
+      {
+        title: "How to enroll a child in school regardless of immigration status",
+        steps: [
+          "Under the Supreme Court ruling in Plyler v. Doe (1982), all children have the right to a free public education regardless of immigration status. Schools cannot ask about or require proof of citizenship.",
+          "Schools may only require proof of age (birth certificate, baptismal record, or sworn statement), proof of residency in the school district (utility bill, lease, or a letter from someone you're staying with), and immunization records.",
+          "If you do not have a permanent address, the McKinney-Vento Act protects children experiencing homelessness and requires schools to enroll them immediately.",
+          "If a school asks for a Social Security number, you may decline. It is optional and cannot be required for enrollment.",
+          "If a school denies or delays enrollment, contact the school district's central office in writing. Request a written explanation for any denial.",
+          "Your state's Department of Education has an office that handles enrollment disputes. File a complaint if the school refuses to enroll your child.",
+          "Organizations like the ACLU, MALDEF, or local immigrant legal aid can provide support if you face enrollment barriers."
+        ]
+      },
+      {
+        title: "How to request an IEP for a child with disabilities",
+        steps: [
+          "An Individualized Education Program (IEP) is a legal document under the Individuals with Disabilities Education Act (IDEA) that guarantees specialized education services for eligible children.",
+          "Submit a written request to the school principal or special education coordinator asking for an evaluation of your child. The school must respond within a set timeframe (usually 60 days).",
+          "The school must obtain your written consent before evaluating your child. The evaluation is free.",
+          "After the evaluation, the school will hold an IEP meeting. You are a full member of the IEP team and must be invited.",
+          "If you disagree with the evaluation results or the IEP, you have the right to an Independent Educational Evaluation (IEE) at the school's expense.",
+          "You have the right to bring an advocate, attorney, or support person to any IEP meeting. Bring someone who can take notes.",
+          "If the school fails to implement the IEP, file a complaint with your state's Department of Education's special education division."
+        ]
+      },
+      {
+        title: "How to report school discrimination",
+        steps: [
+          "Federal laws prohibit discrimination in schools based on race, color, national origin, sex, disability, and religion. Title VI, Title IX, and Section 504 are key protections.",
+          "Document the discriminatory incidents: dates, what was said or done, who was involved, any witnesses, and how your child was affected.",
+          "Report the incident in writing to the school principal and the district's civil rights or equity coordinator. Keep copies.",
+          "File a complaint with the U.S. Department of Education's Office for Civil Rights (OCR) at ed.gov/ocr or by calling 1-800-421-3481. Complaints must be filed within 180 days of the incident.",
+          "You can also file complaints with the U.S. Department of Justice Civil Rights Division if the discrimination is severe.",
+          "Do not withdraw your child from school during an active complaint process — it can complicate your case.",
+          "Organizations like the NAACP, MALDEF, ACLU, and local civil rights groups may provide free legal support for school discrimination cases."
+        ]
+      },
+      {
+        title: "How to appeal a suspension or expulsion",
+        steps: [
+          "Before any suspension of more than 10 days or an expulsion, your child is entitled to due process: notice of the charges and an opportunity to respond.",
+          "Request a written copy of the school's suspension or expulsion decision, including the specific rule that was violated and the evidence used.",
+          "Submit a written appeal to the principal within the deadline listed in the suspension/expulsion letter. If no deadline is listed, file as soon as possible.",
+          "If the principal upholds the decision, appeal to the school board. Most districts have a formal hearing process for expulsions.",
+          "At any hearing, you have the right to present your child's side, bring witnesses, and challenge the school's evidence.",
+          "Children with IEPs or 504 plans have additional protections — a 'manifestation determination' hearing is required to assess whether the behavior was related to the disability.",
+          "Contact legal aid or an education advocate for serious or long-term suspensions — these significantly impact a child's educational record and future."
+        ]
+      },
+      {
+        title: "How to request language access services at school",
+        steps: [
+          "Under Title VI of the Civil Rights Act, schools must provide meaningful language access to parents with limited English proficiency — including translation and interpretation services.",
+          "Submit a written request to the school principal or district office asking for interpretation at meetings and translation of key documents (IEPs, disciplinary notices, enrollment forms).",
+          "Schools must provide these services free of charge. You should never be required to bring your own interpreter or pay for translation.",
+          "If your child is being used as a translator during important meetings, object in writing and request a qualified adult interpreter.",
+          "For IEP meetings, insist that all documents be translated before the meeting so you can review them in advance.",
+          "If the school refuses or provides inadequate language access, file a complaint with the school district's Title VI coordinator or with the U.S. Department of Education's Office for Civil Rights.",
+          "Document all requests and responses in writing. Language access is a civil right, not a favor."
+        ]
+      }
+    ]
+  }
+};
+
+// Render all sections
+Object.entries(DATA).forEach(([key, section]) => {
+  const grid = document.getElementById(`${key}-grid`);
+  if (!grid) return;
+  section.guides.forEach((guide, i) => {
+    const card = document.createElement('div');
+    card.className = 'guide-card';
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', guide.title);
+    card.innerHTML = `
+      <span class="guide-number">${String(i + 1).padStart(2, '0')}</span>
+      <div class="guide-title">${guide.title}</div>
+      <span class="guide-arrow">
+        Read Guide
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </span>`;
+    const open = () => openModal(section.label, guide);
+    card.addEventListener('click', open);
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    grid.appendChild(card);
+  });
+});
+
+// Modal
+const overlay = document.getElementById('modal');
+const modalTag = document.getElementById('modal-tag');
+const modalTitle = document.getElementById('modal-title');
+const modalSteps = document.getElementById('modal-steps');
+const closeBtn = document.getElementById('modal-close');
+
+function openModal(label, guide) {
+  modalTag.textContent = label;
+  modalTitle.textContent = guide.title;
+  modalSteps.innerHTML = guide.steps.map(s => `<li>${s}</li>`).join('');
+  overlay.classList.add('open');
+  overlay.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+  closeBtn.focus();
+}
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+closeBtn.addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
