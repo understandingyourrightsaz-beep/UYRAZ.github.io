@@ -4,30 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us — Understanding Your Rights</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --navy: #0a1628;
       --navy-mid: #112240;
       --navy-dark: #071020;
+      --navy-deep: #040b16;
       --gold: #c9a84c;
       --gold-light: #e0bf74;
+      --gold-pale: #f0d9a0;
       --white: #ffffff;
-      --muted: #a8b8d0;
-      --dim: #6b7f96;
+      --muted: #b3c2d8;
+      --dim: #8296ad;
       --border: #1e3a5f;
+      --border-soft: rgba(201, 168, 76, 0.18);
+      --gold-gradient: linear-gradient(135deg, #e0bf74 0%, #c9a84c 45%, #a8873a 100%);
+      --gold-text-gradient: linear-gradient(120deg, #f0d9a0 0%, #e0bf74 40%, #c9a84c 100%);
+      --shadow-card: 0 4px 24px rgba(2, 8, 20, 0.45);
+      --shadow-card-hover: 0 24px 48px -12px rgba(2, 8, 20, 0.65), 0 0 0 1px rgba(201, 168, 76, 0.25);
+      --shadow-gold: 0 8px 28px -6px rgba(201, 168, 76, 0.45);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Crimson Pro', Georgia, serif;
       background-color: var(--navy);
+      background-image:
+        radial-gradient(1100px 600px at 85% -10%, rgba(201, 168, 76, 0.06), transparent 60%),
+        radial-gradient(900px 700px at -10% 30%, rgba(30, 58, 95, 0.35), transparent 60%);
+      background-attachment: fixed;
       color: var(--white);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: rgba(201, 168, 76, 0.35); color: var(--white); }
+
+    a, button { touch-action: manipulation; }
+
+    :focus-visible {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 3px;
+      border-radius: 2px;
     }
 
     /* ── HEADER ── */
@@ -35,9 +65,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 22px 60px;
-      background-color: var(--navy);
-      border-bottom: 2px solid var(--gold);
+      gap: 24px;
+      padding: 18px 60px;
+      background: rgba(7, 16, 32, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-soft);
+      box-shadow: 0 1px 0 rgba(201, 168, 76, 0.25), 0 12px 30px -18px rgba(0, 0, 0, 0.8);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -45,45 +79,92 @@
 
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 700;
       letter-spacing: 0.5px;
       color: var(--white);
       line-height: 1.3;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      white-space: nowrap;
     }
     .logo span { color: var(--gold); }
 
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-soft);
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%, rgba(201, 168, 76, 0.22), rgba(201, 168, 76, 0.05));
+      color: var(--gold-light);
+    }
+    .logo-mark svg { width: 18px; height: 18px; }
+
     nav {
       display: flex;
-      gap: 36px;
+      gap: 8px;
       align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
     nav a {
-      color: var(--gold);
+      color: var(--muted);
       text-decoration: none;
       font-family: 'Crimson Pro', serif;
-      font-size: 14px;
-      letter-spacing: 2px;
+      font-size: 13.5px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
       font-weight: 600;
-      transition: color 0.2s;
+      padding: 8px 14px;
+      position: relative;
+      transition: color 0.25s var(--ease);
+      cursor: pointer;
     }
-    nav a:hover { color: var(--white); }
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 4px;
+      height: 1.5px;
+      background: var(--gold-gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s var(--ease);
+    }
+    nav a:hover { color: var(--gold-light); }
+    nav a:hover::after { transform: scaleX(1); }
+    nav a[aria-current="page"] { color: var(--gold-light); }
+    nav a[aria-current="page"]::after { transform: scaleX(1); }
+
     nav a.donate-btn {
-      background-color: var(--gold);
-      color: var(--navy);
-      padding: 8px 22px;
-      border-radius: 2px;
+      background: var(--gold-gradient);
+      color: var(--navy-dark);
+      padding: 10px 26px;
+      margin-left: 10px;
+      border-radius: 3px;
       font-weight: 700;
-      transition: background-color 0.2s, color 0.2s;
+      box-shadow: var(--shadow-gold);
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), filter 0.25s;
     }
-    nav a.donate-btn:hover { background-color: var(--white); color: var(--navy); }
+    nav a.donate-btn::after { display: none; }
+    nav a.donate-btn:hover {
+      color: var(--navy-dark);
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+      box-shadow: 0 12px 32px -6px rgba(201, 168, 76, 0.55);
+    }
 
     /* ── PAGE HERO ── */
     .page-hero {
       background: linear-gradient(to bottom, var(--navy) 0%, var(--navy-mid) 100%);
-      padding: 90px 60px 70px;
+      padding: 100px 60px 80px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -92,70 +173,115 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle at 15% 60%, rgba(201,168,76,0.05) 0%, transparent 55%),
-                        radial-gradient(circle at 85% 25%, rgba(201,168,76,0.04) 0%, transparent 50%);
+      background-image: radial-gradient(circle at 15% 60%, rgba(201,168,76,0.06) 0%, transparent 55%),
+                        radial-gradient(circle at 85% 25%, rgba(201,168,76,0.05) 0%, transparent 50%);
       pointer-events: none;
     }
+    .page-hero-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(420px, 80vw);
+      height: auto;
+      color: var(--gold);
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .page-hero > * { position: relative; }
     .page-hero-eyebrow {
       font-size: 12px;
-      letter-spacing: 4px;
+      letter-spacing: 5px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-light);
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       font-family: 'Crimson Pro', serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
     }
+    .page-hero-eyebrow::before,
+    .page-hero-eyebrow::after {
+      content: '';
+      width: 44px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .page-hero-eyebrow::after { background: linear-gradient(to left, transparent, var(--gold)); }
     .page-hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 52px;
+      font-size: clamp(36px, 5.5vw, 58px);
       font-weight: 900;
       color: var(--white);
-      line-height: 1.2;
-      max-width: 700px;
+      line-height: 1.15;
+      max-width: 760px;
       margin: 0 auto 8px;
+      text-wrap: balance;
+      text-shadow: 0 4px 40px rgba(2, 8, 20, 0.6);
     }
-    .page-hero h1 span { color: var(--gold); }
+    .page-hero h1 span {
+      background: var(--gold-text-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-style: italic;
+    }
     .gold-line {
-      width: 70px;
+      width: 72px;
       height: 3px;
-      background-color: var(--gold);
-      margin: 24px auto 0;
+      background: var(--gold-gradient);
+      border-radius: 2px;
+      margin: 28px auto 0;
+      position: relative;
     }
+    .gold-line::before,
+    .gold-line::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+    .gold-line::before { left: -14px; }
+    .gold-line::after { right: -14px; }
 
     /* ── SECTION SHARED ── */
     .section-eyebrow {
       font-size: 12px;
-      letter-spacing: 4px;
+      letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--gold);
       font-weight: 600;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       font-family: 'Crimson Pro', serif;
     }
 
     /* ── MISSION ── */
     .mission {
-      background: linear-gradient(to bottom, var(--navy-mid), var(--navy));
-      padding: 90px 60px;
+      padding: 100px 60px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 80px;
       align-items: center;
       max-width: 1200px;
       margin: 0 auto;
       width: 100%;
     }
-    .mission-text {}
     .mission-text h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 40px;
+      font-size: clamp(30px, 4vw, 42px);
       font-weight: 700;
       color: var(--white);
       line-height: 1.25;
       margin-bottom: 10px;
+      text-wrap: balance;
     }
     .mission-text h2 span { color: var(--gold); }
-    .mission-text .gold-line { margin: 20px 0 30px; }
+    .mission-text .gold-line { margin: 22px 0 32px; }
     .mission-text p {
       font-size: 18px;
       color: var(--muted);
@@ -167,45 +293,65 @@
 
     .mission-quote {
       border-left: 3px solid var(--gold);
-      padding: 28px 36px;
-      background-color: var(--navy-dark);
-      border-radius: 0 4px 4px 0;
+      padding: 36px 40px;
+      background:
+        radial-gradient(circle at 85% 10%, rgba(201,168,76,0.08), transparent 60%),
+        var(--navy-dark);
+      border-radius: 0 8px 8px 0;
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+    .mission-quote::before {
+      content: '“';
+      position: absolute;
+      top: -26px;
+      left: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 96px;
+      color: var(--gold);
+      line-height: 1;
+      opacity: 0.35;
+      pointer-events: none;
     }
     .mission-quote blockquote {
       font-family: 'Playfair Display', serif;
-      font-size: 22px;
+      font-size: 23px;
       font-weight: 400;
       color: var(--white);
       line-height: 1.65;
       font-style: italic;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
     .mission-quote blockquote span { color: var(--gold); }
     .mission-quote cite {
       font-size: 13px;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--dim);
+      color: var(--gold);
       font-style: normal;
       font-weight: 600;
     }
 
     /* ── WHY WE DO IT ── */
     .why {
-      background-color: var(--navy-dark);
+      background:
+        radial-gradient(700px 320px at 50% 0%, rgba(201,168,76,0.05), transparent 70%),
+        var(--navy-dark);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 90px 60px;
+      padding: 100px 60px;
       text-align: center;
     }
     .why h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 40px;
+      font-size: clamp(30px, 4vw, 42px);
       font-weight: 700;
       color: var(--white);
-      margin-bottom: 6px;
+      margin: 0 auto 6px;
+      max-width: 820px;
+      text-wrap: balance;
     }
-    .why .gold-line { margin: 20px auto 50px; }
+    .why .gold-line { margin: 24px auto 54px; }
     .why-body {
       max-width: 780px;
       margin: 0 auto;
@@ -223,37 +369,39 @@
 
     .why-personal {
       max-width: 780px;
-      margin: 48px auto 0;
-      background: linear-gradient(135deg, rgba(201,168,76,0.07), rgba(201,168,76,0.02));
-      border: 1px solid rgba(201,168,76,0.25);
-      border-radius: 4px;
-      padding: 36px 40px;
+      margin: 56px auto 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.09), rgba(201,168,76,0.02));
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 8px;
+      padding: 42px 46px 36px;
       position: relative;
+      text-align: left;
+      box-shadow: var(--shadow-card);
     }
     .why-personal::before {
-      content: '"';
+      content: '“';
       position: absolute;
-      top: -18px;
-      left: 36px;
+      top: -24px;
+      left: 34px;
       font-family: 'Playfair Display', serif;
-      font-size: 80px;
+      font-size: 92px;
       color: var(--gold);
       line-height: 1;
       opacity: 0.5;
     }
     .why-personal p {
       font-family: 'Playfair Display', serif;
-      font-size: 19px;
+      font-size: 20px;
       color: var(--white);
       line-height: 1.75;
       font-style: italic;
       font-weight: 400;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
     .why-personal .attribution {
       font-family: 'Crimson Pro', serif;
       font-size: 13px;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
       color: var(--gold);
       font-weight: 600;
@@ -263,52 +411,75 @@
     /* ── WHAT WE'VE DONE ── */
     .done {
       background: linear-gradient(to bottom, var(--navy), var(--navy-mid));
-      padding: 90px 60px;
+      padding: 100px 60px;
       text-align: center;
     }
     .done h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 40px;
+      font-size: clamp(30px, 4vw, 42px);
       font-weight: 700;
       color: var(--white);
       margin-bottom: 6px;
+      text-wrap: balance;
     }
-    .done .gold-line { margin: 20px auto 50px; }
+    .done .gold-line { margin: 24px auto 54px; }
 
     .done-stats {
       display: flex;
       justify-content: center;
       gap: 0;
-      max-width: 900px;
-      margin: 0 auto 60px;
+      max-width: 940px;
+      margin: 0 auto 64px;
       flex-wrap: wrap;
       border: 1px solid var(--border);
-      border-radius: 4px;
+      border-radius: 8px;
       overflow: hidden;
+      box-shadow: var(--shadow-card);
     }
     .done-stat {
       flex: 1 1 200px;
-      padding: 36px 28px;
+      padding: 40px 28px;
       text-align: center;
       border-right: 1px solid var(--border);
-      background-color: var(--navy-dark);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(201,168,76,0.06), transparent 70%),
+        var(--navy-dark);
+      transition: background-color 0.3s;
+      position: relative;
     }
+    .done-stat::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 60%;
+      height: 2px;
+      background: var(--gold-gradient);
+      transition: transform 0.35s var(--ease);
+      transform-origin: center;
+    }
+    .done-stat:hover::after { transform: translateX(-50%) scaleX(1); }
     .done-stat:last-child { border-right: none; }
     .done-stat .stat-num {
       font-family: 'Playfair Display', serif;
-      font-size: 48px;
+      font-size: 52px;
       font-weight: 900;
-      color: var(--gold);
+      background: var(--gold-text-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       line-height: 1;
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .done-stat .stat-label {
-      font-size: 13px;
+      font-size: 12.5px;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--dim);
       font-weight: 600;
+      line-height: 1.6;
+      display: block;
     }
 
     .done-body {
@@ -328,36 +499,55 @@
 
     /* ── GOAL ── */
     .goal {
-      background-color: var(--navy-dark);
+      background:
+        radial-gradient(700px 320px at 50% 0%, rgba(201,168,76,0.05), transparent 70%),
+        var(--navy-dark);
       border-top: 1px solid var(--border);
-      padding: 90px 60px;
+      padding: 100px 60px;
       text-align: center;
     }
     .goal h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 40px;
+      font-size: clamp(30px, 4vw, 42px);
       font-weight: 700;
       color: var(--white);
       margin-bottom: 6px;
+      text-wrap: balance;
     }
-    .goal .gold-line { margin: 20px auto 50px; }
+    .goal .gold-line { margin: 24px auto 54px; }
     .goal-pillars {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 1000px;
-      margin: 0 auto 60px;
+      gap: 26px;
+      max-width: 1040px;
+      margin: 0 auto 68px;
     }
     .goal-pillar {
-      background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+      background: linear-gradient(160deg, rgba(17,34,64,0.85), var(--navy-dark) 70%);
       border: 1px solid var(--border);
-      border-top: 3px solid var(--gold);
-      border-radius: 4px;
-      padding: 36px 28px;
+      border-radius: 6px;
+      padding: 40px 32px;
       text-align: left;
-      transition: transform 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
     }
-    .goal-pillar:hover { transform: translateY(-4px); border-top-color: var(--gold-light); }
+    .goal-pillar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold-gradient);
+      opacity: 0.75;
+      transition: opacity 0.3s;
+    }
+    .goal-pillar:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201, 168, 76, 0.4);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .goal-pillar:hover::before { opacity: 1; }
     .goal-pillar .pillar-icon {
       font-size: 28px;
       display: block;
@@ -365,100 +555,145 @@
     }
     .goal-pillar h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 20px;
+      font-size: 21px;
       color: var(--white);
       margin-bottom: 12px;
     }
     .goal-pillar p {
-      font-size: 15px;
+      font-size: 15.5px;
       color: var(--muted);
-      line-height: 1.75;
+      line-height: 1.78;
       font-weight: 300;
     }
 
     .goal-closing {
-      max-width: 680px;
+      max-width: 700px;
       margin: 0 auto;
     }
     .goal-closing p {
       font-family: 'Playfair Display', serif;
-      font-size: 22px;
+      font-size: clamp(20px, 2.6vw, 24px);
       color: var(--white);
       line-height: 1.75;
       font-style: italic;
-      margin-bottom: 36px;
+      margin-bottom: 38px;
+      text-wrap: balance;
     }
     .goal-closing p span { color: var(--gold); }
     .goal-cta {
-      display: inline-block;
-      background-color: var(--gold);
-      color: var(--navy);
-      padding: 16px 54px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--gold-gradient);
+      color: var(--navy-dark);
+      padding: 18px 56px;
       text-decoration: none;
       font-family: 'Crimson Pro', serif;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
-      border-radius: 2px;
-      transition: background-color 0.25s;
+      border-radius: 3px;
+      cursor: pointer;
+      box-shadow: var(--shadow-gold);
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), filter 0.25s;
     }
-    .goal-cta:hover { background-color: var(--white); }
+    .goal-cta svg {
+      width: 15px; height: 15px;
+      transition: transform 0.25s var(--ease);
+    }
+    .goal-cta:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.08);
+      box-shadow: 0 16px 40px -8px rgba(201, 168, 76, 0.6);
+    }
+    .goal-cta:hover svg { transform: translateX(4px); }
+    .goal-cta:active { transform: translateY(-1px) scale(0.99); }
 
     /* ── DISCLAIMER ── */
     .disclaimer {
-      background-color: var(--navy-dark);
+      background-color: var(--navy-deep);
       border-top: 1px solid var(--border);
-      padding: 16px 60px;
+      padding: 18px 60px;
       text-align: center;
-      font-size: 12px;
+      font-size: 13px;
       color: var(--dim);
       line-height: 1.7;
       font-family: 'Crimson Pro', serif;
     }
-    .disclaimer span { color: var(--gold); font-weight: 700; }
+    .disclaimer span {
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 11.5px;
+    }
 
     /* ── FOOTER ── */
     footer {
-      background-color: var(--navy);
-      border-top: 2px solid var(--gold);
-      padding: 22px 60px;
+      background-color: var(--navy-deep);
+      border-top: 1px solid var(--border-soft);
+      padding: 26px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--dim);
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
       font-family: 'Crimson Pro', serif;
     }
-    footer a { color: var(--gold); text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
-    footer a:hover { color: var(--white); }
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: var(--gold-light); text-decoration: underline; text-underline-offset: 4px; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+      transition-delay: var(--d, 0ms);
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .mission { grid-template-columns: 1fr; gap: 48px; padding: 60px 40px; }
+      .mission { grid-template-columns: 1fr; gap: 56px; padding: 72px 40px; }
       .goal-pillars { grid-template-columns: 1fr 1fr; }
       .done-stats { flex-direction: column; }
       .done-stat { border-right: none; border-bottom: 1px solid var(--border); }
       .done-stat:last-child { border-bottom: none; }
     }
     @media (max-width: 700px) {
-      header { padding: 18px 24px; flex-direction: column; gap: 14px; }
-      .page-hero { padding: 70px 24px 50px; }
-      .page-hero h1 { font-size: 36px; }
-      .mission { padding: 60px 24px; }
-      .mission-text h2 { font-size: 30px; }
-      .why { padding: 60px 24px; }
-      .why h2 { font-size: 30px; }
-      .why-personal { padding: 28px 24px; }
-      .done { padding: 60px 24px; }
-      .done h2 { font-size: 30px; }
-      .goal { padding: 60px 24px; }
-      .goal h2 { font-size: 30px; }
+      header { padding: 16px 20px; flex-direction: column; gap: 12px; }
+      nav { justify-content: center; gap: 2px; }
+      nav a { padding: 8px 10px; font-size: 12.5px; }
+      .page-hero { padding: 76px 24px 56px; }
+      .mission { padding: 64px 24px; }
+      .why { padding: 72px 24px; }
+      .why-personal { padding: 34px 26px 28px; }
+      .done { padding: 72px 24px; }
+      .goal { padding: 72px 24px; }
       .goal-pillars { grid-template-columns: 1fr; }
-      footer { padding: 18px 24px; flex-direction: column; text-align: center; }
-      .disclaimer { padding: 14px 24px; }
+      footer { padding: 20px 24px; flex-direction: column; text-align: center; }
+      .disclaimer { padding: 16px 24px; }
     }
   </style>
 </head>
@@ -466,9 +701,14 @@
 
   <!-- Header -->
   <header>
-    <a href="index.html" class="logo">Understanding <span>Your Rights</span></a>
+    <a href="index.html" class="logo">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 6l7-3 7 3"/><path d="M5 6l-3 7a4 4 0 0 0 6 0L5 6z"/><path d="M19 6l-3 7a4 4 0 0 0 6 0l-3-7z"/><path d="M8 21h8"/></svg>
+      </span>
+      Understanding <span>Your Rights</span>
+    </a>
     <nav>
-      <a href="about.html">About</a>
+      <a href="about.html" aria-current="page">About</a>
       <a href="resources.html">Resources</a>
       <a href="contact.html">Contact</a>
       <a href="donate.html" class="donate-btn">Donate</a>
@@ -477,22 +717,23 @@
 
   <!-- Page Hero -->
   <section class="page-hero">
-    <div class="page-hero-eyebrow">Our Story · Our Mission · Our Community</div>
-    <h1>Understanding Your Rights</h1>
-    <div class="gold-line"></div>
+    <svg class="page-hero-watermark" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 6l7-3 7 3"/><path d="M5 6l-3 7a4 4 0 0 0 6 0L5 6z"/><path d="M19 6l-3 7a4 4 0 0 0 6 0l-3-7z"/><path d="M8 21h8"/></svg>
+    <div class="page-hero-eyebrow reveal">Our Story · Our Mission · Our Community</div>
+    <h1 class="reveal" style="--d:80ms">Understanding Your Rights</h1>
+    <div class="gold-line reveal" style="--d:160ms"></div>
   </section>
 
   <!-- Mission -->
   <div style="background: linear-gradient(to bottom, var(--navy-mid), var(--navy));">
     <div class="mission">
       <div class="mission-text">
-        <div class="section-eyebrow">Who We Are</div>
-        <h2>Built on one simple idea.</h2>
-        <div class="gold-line"></div>
-        <p>Understanding Your Rights is a community-driven nonprofit built on one simple belief: that every person, regardless of background, language, or circumstance, deserves to know the rights that protect them.</p>
-        <p>We aim to translate complex legal protections into plain, accessible language that everyday people can actually use. Our work spans six core areas of life — police encounters, ICE interactions, workers' rights, housing, healthcare, and education — and our resources are available to anyone and everyone.</p>
+        <div class="section-eyebrow reveal">Who We Are</div>
+        <h2 class="reveal" style="--d:80ms">Built on one simple idea.</h2>
+        <div class="gold-line reveal" style="--d:160ms"></div>
+        <p class="reveal" style="--d:220ms">Understanding Your Rights is a community-driven nonprofit built on one simple belief: that every person, regardless of background, language, or circumstance, deserves to know the rights that protect them.</p>
+        <p class="reveal" style="--d:300ms">We aim to translate complex legal protections into plain, accessible language that everyday people can actually use. Our work spans six core areas of life — police encounters, ICE interactions, workers' rights, housing, healthcare, and education — and our resources are available to anyone and everyone.</p>
       </div>
-      <div class="mission-quote">
+      <div class="mission-quote reveal" style="--d:200ms">
         <blockquote>"Education is the most powerful weapon which you can use to change the world"</blockquote>
         <cite>— Nelson Mandela</cite>
       </div>
@@ -501,15 +742,15 @@
 
   <!-- Why We Do It -->
   <section class="why">
-    <div class="section-eyebrow"> why we do it</div>
-    <h2>Ignorance of the law is a danger to our community.</h2>
-    <div class="gold-line"></div>
+    <div class="section-eyebrow reveal"> why we do it</div>
+    <h2 class="reveal" style="--d:80ms">Ignorance of the law is a danger to our community.</h2>
+    <div class="gold-line reveal" style="--d:160ms"></div>
     <div class="why-body">
-      <p>Legal rights education is one of the most <strong>consistently overlooked forms of literacy</strong> in this country. People immigrate to build better lives. People work long hours to provide for their families. People raise children, go through hardships, and chase opportunity — and in the middle of all of that, they are rarely told what the law actually entitles them to.</p>
-      <p>We live in a moment of real turmoil in the United States, and that turmoil creates fertile ground for exploitation. When people do not know their rights, others — employers, landlords, institutions — can and do take advantage of that ignorance. Knowledge is used to exploit the uneducated and take from those who are already on their last leg.</p>
-      <p>So we ask: <strong>why not level the playing field?</strong> Greed, exploitation, and corruption are not new things in life, but an uneducated population makes it far easier to act on them. We are here to change that.</p>
+      <p class="reveal">Legal rights education is one of the most <strong>consistently overlooked forms of literacy</strong> in this country. People immigrate to build better lives. People work long hours to provide for their families. People raise children, go through hardships, and chase opportunity — and in the middle of all of that, they are rarely told what the law actually entitles them to.</p>
+      <p class="reveal">We live in a moment of real turmoil in the United States, and that turmoil creates fertile ground for exploitation. When people do not know their rights, others — employers, landlords, institutions — can and do take advantage of that ignorance. Knowledge is used to exploit the uneducated and take from those who are already on their last leg.</p>
+      <p class="reveal">So we ask: <strong>why not level the playing field?</strong> Greed, exploitation, and corruption are not new things in life, but an uneducated population makes it far easier to act on them. We are here to change that.</p>
     </div>
-    <div class="why-personal">
+    <div class="why-personal reveal">
       <p>I've seen families firsthand get exploited because they don't know better. Families getting threatened or paid less because they are immigrants. These people are human too, they are our neighbors, our coworkers, our friends, sometimes even our own families.</p>
       <div class="attribution">— A Note from Our Community member</div>
     </div>
@@ -517,11 +758,11 @@
 
   <!-- What We've Done -->
   <section class="done">
-    <div class="section-eyebrow">What We've Done</div>
-    <h2>On the ground in our community.</h2>
-    <div class="gold-line"></div>
+    <div class="section-eyebrow reveal">What We've Done</div>
+    <h2 class="reveal" style="--d:80ms">On the ground in our community.</h2>
+    <div class="gold-line reveal" style="--d:160ms"></div>
 
-    <div class="done-stats">
+    <div class="done-stats reveal" style="--d:200ms">
       <div class="done-stat">
         <span class="stat-num">6</span>
         <span class="stat-label">Areas of Law</span>
@@ -541,29 +782,29 @@
     </div>
 
     <div class="done-body">
-      <p>To date, we have been on the ground in our community, <strong>distributing educational pamphlets</strong> directly to the people who need them most. We have material in both English and Spanish. These materials are aimed to be clear, accurate, and based on official legal sources.</p>
-      <p>But we are not content to stop there. We have established solid footing in our community and we hope to keep growing as much as we can.</p>
+      <p class="reveal">To date, we have been on the ground in our community, <strong>distributing educational pamphlets</strong> directly to the people who need them most. We have material in both English and Spanish. These materials are aimed to be clear, accurate, and based on official legal sources.</p>
+      <p class="reveal">But we are not content to stop there. We have established solid footing in our community and we hope to keep growing as much as we can.</p>
     </div>
   </section>
 
   <!-- Goal -->
   <section class="goal">
-    <div class="section-eyebrow">Where We're Going</div>
-    <h2>Our end goal.</h2>
-    <div class="gold-line"></div>
+    <div class="section-eyebrow reveal">Where We're Going</div>
+    <h2 class="reveal" style="--d:80ms">Our end goal.</h2>
+    <div class="gold-line reveal" style="--d:160ms"></div>
 
     <div class="goal-pillars">
-      <div class="goal-pillar">
+      <div class="goal-pillar reveal">
         <span class="pillar-icon"></span>
         <h3>Safety Through Knowledge</h3>
         <p>We want everyone to know the protections entitled to them. We hope they can keep themselves and their families safe from exploitation and injustice.</p>
       </div>
-      <div class="goal-pillar">
+      <div class="goal-pillar reveal" style="--d:120ms">
         <span class="pillar-icon"></span>
         <h3>Confidence to Act</h3>
         <p>We want to build a city where residents feel safe exercising their rights, where no one is silenced by ignorance of the law.</p>
       </div>
-      <div class="goal-pillar">
+      <div class="goal-pillar reveal" style="--d:240ms">
         <span class="pillar-icon"></span>
         <h3>A Cohesive Community</h3>
         <p>Education is a public good. A confident community is a cohesive one and a confident community builds stronger neighborhoods, stronger families, stronger cities.</p>
@@ -571,8 +812,11 @@
     </div>
 
     <div class="goal-closing">
-      <p>"We are here to rally this community around <span>knowledge</span> because an educated community is a stronger community."</p>
-      <a href="resources.html" class="goal-cta">Explore Our Resources</a>
+      <p class="reveal">"We are here to rally this community around <span>knowledge</span> because an educated community is a stronger community."</p>
+      <a href="resources.html" class="goal-cta reveal" style="--d:120ms">
+        Explore Our Resources
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
   </section>
 
@@ -593,6 +837,26 @@
       <a href="donate.html">Donate</a>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var items = document.querySelectorAll('.reveal');
+      if (reduced || !('IntersectionObserver' in window)) {
+        items.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      items.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
 
 </body>
 </html>
