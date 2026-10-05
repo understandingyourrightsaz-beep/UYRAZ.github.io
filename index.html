@@ -4,1041 +4,396 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Understanding Your Rights</title>
+  <meta name="description" content="Plain-language guides to your legal rights, for free, for everyone."/>
+  <link rel="icon" type="image/png" href="images/favicon.png"/>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://images.unsplash.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
   <style>
-    :root {
-      --navy: #0a1628;
-      --navy-mid: #112240;
-      --navy-dark: #071020;
-      --navy-deep: #040b16;
-      --gold: #c9a84c;
-      --gold-light: #e0bf74;
-      --gold-pale: #f0d9a0;
-      --white: #ffffff;
-      --ivory: #f5efe2;
-      --muted: #b3c2d8;
-      --dim: #8296ad;
-      --border: #1e3a5f;
-      --border-soft: rgba(201, 168, 76, 0.18);
-      --gold-gradient: linear-gradient(135deg, #e0bf74 0%, #c9a84c 45%, #a8873a 100%);
-      --gold-text-gradient: linear-gradient(120deg, #f0d9a0 0%, #e0bf74 40%, #c9a84c 100%);
-      --shadow-card: 0 4px 24px rgba(2, 8, 20, 0.45);
-      --shadow-card-hover: 0 24px 48px -12px rgba(2, 8, 20, 0.65), 0 0 0 1px rgba(201, 168, 76, 0.25);
-      --shadow-gold: 0 8px 28px -6px rgba(201, 168, 76, 0.45);
-      --ease: cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Crimson Pro', Georgia, serif;
-      background-color: var(--navy);
-      background-image:
-        radial-gradient(1100px 600px at 85% -10%, rgba(201, 168, 76, 0.06), transparent 60%),
-        radial-gradient(900px 700px at -10% 30%, rgba(30, 58, 95, 0.35), transparent 60%);
-      background-attachment: fixed;
-      color: var(--white);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-      font-size: 17px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    ::selection { background: rgba(201, 168, 76, 0.35); color: var(--white); }
-
-    a, button { touch-action: manipulation; }
-
-    :focus-visible {
-      outline: 2px solid var(--gold-light);
-      outline-offset: 3px;
-      border-radius: 2px;
-    }
-
-    /* ── HEADER ── */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      padding: 18px 60px;
-      background: rgba(7, 16, 32, 0.82);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border-soft);
-      box-shadow: 0 1px 0 rgba(201, 168, 76, 0.25), 0 12px 30px -18px rgba(0, 0, 0, 0.8);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 21px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      color: var(--white);
-      line-height: 1.3;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      white-space: nowrap;
-    }
-    .logo span { color: var(--gold); }
-
-    .logo-mark {
-      width: 34px;
-      height: 34px;
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--border-soft);
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 25%, rgba(201, 168, 76, 0.22), rgba(201, 168, 76, 0.05));
-      color: var(--gold-light);
-    }
-    .logo-mark svg { width: 18px; height: 18px; }
-
-    nav {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-family: 'Crimson Pro', serif;
-      font-size: 13.5px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      font-weight: 600;
-      padding: 8px 14px;
-      position: relative;
-      transition: color 0.25s var(--ease);
-      cursor: pointer;
-    }
-    nav a::after {
-      content: '';
-      position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 4px;
-      height: 1.5px;
-      background: var(--gold-gradient);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s var(--ease);
-    }
-    nav a:hover { color: var(--gold-light); }
-    nav a:hover::after { transform: scaleX(1); }
-
-    nav a.donate-btn {
-      background: var(--gold-gradient);
-      color: var(--navy-dark);
-      padding: 10px 26px;
-      margin-left: 10px;
-      border-radius: 3px;
-      font-weight: 700;
-      box-shadow: var(--shadow-gold);
-      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), filter 0.25s;
-    }
-    nav a.donate-btn::after { display: none; }
-    nav a.donate-btn:hover {
-      color: var(--navy-dark);
-      transform: translateY(-2px);
-      filter: brightness(1.08);
-      box-shadow: 0 12px 32px -6px rgba(201, 168, 76, 0.55);
-    }
-
     /* ── HERO ── */
-    .hero {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 120px 40px 100px;
-      background: linear-gradient(to bottom, var(--navy) 0%, var(--navy-mid) 100%);
+    .home-hero {
       position: relative;
+      isolation: isolate;
       overflow: hidden;
+      background: var(--navy);
+      color: #ffffff;
+      padding: 120px 0 112px;
     }
-
-    .hero::before {
+    .home-hero > img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .home-hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle at 20% 50%, rgba(201,168,76,0.07) 0%, transparent 55%),
-                        radial-gradient(circle at 80% 20%, rgba(201,168,76,0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 50% 110%, rgba(30,58,95,0.5) 0%, transparent 60%);
-      pointer-events: none;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(14, 31, 58, 0.95) 0%, rgba(14, 31, 58, 0.86) 45%, rgba(14, 31, 58, 0.35) 100%);
     }
-
-    .hero-watermark {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -52%);
-      width: min(560px, 90vw);
-      height: auto;
-      color: var(--gold);
-      opacity: 0.045;
-      pointer-events: none;
+    .home-hero-content { max-width: 620px; }
+    .home-hero .label { color: var(--gold-on-dark); }
+    .home-hero h1 {
+      color: #ffffff;
+      font-size: clamp(40px, 5.4vw, 60px);
+      line-height: 1.1;
     }
-
-    .hero > * { position: relative; }
-
-    .hero-eyebrow {
-      font-size: 12px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      font-weight: 600;
-      margin-bottom: 28px;
-      font-family: 'Crimson Pro', serif;
-      display: inline-flex;
-      align-items: center;
-      gap: 18px;
-    }
-    .hero-eyebrow::before,
-    .hero-eyebrow::after {
-      content: '';
-      width: 44px;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold));
-    }
-    .hero-eyebrow::after {
-      background: linear-gradient(to left, transparent, var(--gold));
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(40px, 6.2vw, 68px);
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1.12;
-      letter-spacing: 0.5px;
-      max-width: 820px;
-      margin-bottom: 8px;
-      text-wrap: balance;
-      text-shadow: 0 4px 40px rgba(2, 8, 20, 0.6);
-    }
-    .hero h1 span {
-      background: var(--gold-text-gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-style: italic;
-      padding-right: 0.08em;
-    }
-
-    .gold-line {
-      width: 72px;
-      height: 3px;
-      background: var(--gold-gradient);
-      border-radius: 2px;
-      margin: 28px auto;
-      position: relative;
-    }
-    .gold-line::before,
-    .gold-line::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 5px;
-      height: 5px;
-      background: var(--gold);
-      border-radius: 50%;
-      transform: translateY(-50%) rotate(45deg);
-    }
-    .gold-line::before { left: -14px; }
-    .gold-line::after { right: -14px; }
-
-    .hero p {
-      font-size: 20px;
-      color: var(--muted);
-      max-width: 640px;
-      line-height: 1.85;
-      margin-bottom: 52px;
-      font-weight: 300;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--gold-gradient);
-      color: var(--navy-dark);
-      padding: 18px 56px;
-      text-decoration: none;
-      font-family: 'Crimson Pro', serif;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      border-radius: 3px;
-      cursor: pointer;
-      box-shadow: var(--shadow-gold);
-      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), filter 0.25s;
-    }
-    .hero-cta svg {
-      width: 15px; height: 15px;
-      transition: transform 0.25s var(--ease);
-    }
-    .hero-cta:hover {
-      transform: translateY(-3px);
-      filter: brightness(1.08);
-      box-shadow: 0 16px 40px -8px rgba(201, 168, 76, 0.6);
-    }
-    .hero-cta:hover svg { transform: translateX(4px); }
-    .hero-cta:active { transform: translateY(-1px) scale(0.99); }
-
-    /* ── MISSION STRIP ── */
-    .mission-strip {
-      background:
-        linear-gradient(to bottom, rgba(201,168,76,0.03), transparent 40%),
-        var(--navy-dark);
-      border-top: 1px solid var(--border-soft);
-      border-bottom: 1px solid var(--border);
-      padding: 64px 60px;
-      display: flex;
-      justify-content: center;
-      gap: 72px;
-      flex-wrap: wrap;
-    }
-
-    .mission-item {
-      text-align: center;
-      max-width: 250px;
-    }
-
-    .mission-item .icon {
-      font-size: 26px;
-      line-height: 1;
-      width: 68px;
-      height: 68px;
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--border-soft);
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 25%, rgba(201,168,76,0.16), rgba(201,168,76,0.03));
-      box-shadow: inset 0 1px 0 rgba(224,191,116,0.2), 0 8px 20px -8px rgba(2,8,20,0.6);
-      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-    }
-    .mission-item:hover .icon {
-      transform: translateY(-4px);
-      box-shadow: inset 0 1px 0 rgba(224,191,116,0.3), 0 14px 28px -10px rgba(2,8,20,0.7), 0 0 0 1px rgba(201,168,76,0.3);
-    }
-
-    .mission-item h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      color: var(--gold-light);
-      margin-bottom: 10px;
-      letter-spacing: 0.5px;
-    }
-
-    .mission-item p {
-      font-size: 15.5px;
-      color: var(--dim);
+    .home-hero p {
+      font-size: 19px;
       line-height: 1.7;
-      font-weight: 300;
+      color: rgba(255, 255, 255, 0.86);
+      margin: 22px 0 34px;
     }
 
-    /* ── SECTION HEADING SHARED ── */
-    .cover-eyebrow, .audience-eyebrow, .how-eyebrow {
-      font-size: 12px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
-      margin-bottom: 18px;
-      font-family: 'Crimson Pro', serif;
+    /* ── MISSION ── */
+    .mission {
+      border-bottom: 1px solid var(--line);
     }
-
-    /* ── WHAT WE COVER ── */
-    .cover {
-      background: linear-gradient(to bottom, var(--navy), var(--navy-mid));
-      padding: 100px 60px;
-      text-align: center;
-    }
-
-    .cover h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(30px, 4vw, 42px);
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 8px;
-      text-wrap: balance;
-    }
-
-    .cover-sub {
-      font-size: 18px;
-      color: var(--dim);
-      margin-bottom: 12px;
-      font-weight: 300;
-      font-style: italic;
-    }
-
-    .cover > .gold-line { margin: 20px auto 56px; }
-
-    .cover-grid {
+    .mission-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 26px;
-      max-width: 1140px;
-      margin: 0 auto;
     }
+    .mission-item {
+      padding: 40px 32px;
+      border-left: 1px solid var(--line);
+    }
+    .mission-item:first-child { border-left: none; padding-left: 0; }
+    .mission-item:last-child { padding-right: 0; }
+    .mission-item h3 { font-size: 21px; margin-bottom: 8px; }
+    .mission-item p { color: var(--muted); }
 
-    .cover-card {
-      background: linear-gradient(160deg, rgba(17,34,64,0.85), var(--navy-dark) 65%);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 34px 30px 30px;
-      text-align: left;
-      text-decoration: none;
+    /* ── WHAT WE COVER ── */
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px 32px;
+    }
+    .topic {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      cursor: pointer;
-      box-shadow: var(--shadow-card);
-      transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-      position: relative;
-      overflow: hidden;
+      color: inherit;
+      text-decoration: none;
     }
-
-    .cover-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--gold-gradient);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s var(--ease);
+    .topic img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      border-radius: 2px;
+      margin-bottom: 18px;
+      background: var(--sand);
     }
-
-    .cover-card::after {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 160px; height: 160px;
-      background: radial-gradient(circle, rgba(201,168,76,0.1), transparent 70%);
-      opacity: 0;
-      transition: opacity 0.4s var(--ease);
-      pointer-events: none;
-    }
-
-    .cover-card:hover::before { transform: scaleX(1); }
-    .cover-card:hover::after { opacity: 1; }
-
-    .cover-card:hover {
-      border-color: rgba(201, 168, 76, 0.45);
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-card-hover);
-    }
-
-    .cover-card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
+    .topic-num {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gold-text);
+      font-variant-numeric: tabular-nums;
       margin-bottom: 4px;
     }
-
-    .cover-card-emoji {
-      font-size: 24px;
-      line-height: 1;
-      flex-shrink: 0;
-      width: 54px;
-      height: 54px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--border-soft);
-      border-radius: 12px;
-      background: radial-gradient(circle at 30% 25%, rgba(201,168,76,0.14), rgba(201,168,76,0.02));
-      transition: transform 0.3s var(--ease);
-    }
-    .cover-card:hover .cover-card-emoji { transform: scale(1.06); }
-
-    .cover-card-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 34px;
-      letter-spacing: 1px;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(201, 168, 76, 0.4);
-      font-weight: 900;
-      font-style: italic;
-      line-height: 1;
-      transition: -webkit-text-stroke-color 0.3s;
-    }
-    .cover-card:hover .cover-card-num { -webkit-text-stroke-color: rgba(224, 191, 116, 0.75); }
-
-    .cover-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 21px;
-      color: var(--white);
-      line-height: 1.3;
-    }
-
-    .cover-card p {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.75;
-      font-weight: 300;
-      flex: 1;
-    }
-
-    .cover-card-link {
-      font-size: 13px;
-      color: var(--gold);
+    .topic h3 { font-size: 22px; margin-bottom: 8px; }
+    .topic p { color: var(--muted); flex: 1; }
+    .topic-link {
+      margin-top: 14px;
       font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-family: 'Crimson Pro', serif;
-      margin-top: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.25s, gap 0.25s var(--ease);
+      color: var(--blue);
     }
-
-    .cover-card:hover .cover-card-link { color: var(--gold-light); gap: 11px; }
+    .topic:hover h3,
+    .topic:hover .topic-link { text-decoration: underline; text-underline-offset: 3px; }
 
     /* ── WHO THIS IS FOR ── */
-    .audience {
-      background: linear-gradient(to bottom, var(--navy-mid), var(--navy));
-      padding: 100px 60px;
-      text-align: center;
-      position: relative;
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
     }
-    .audience::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: min(720px, 80vw);
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(201,168,76,0.35), transparent);
+    .audience-item {
+      border-top: 3px solid var(--navy);
+      padding-top: 22px;
     }
-
-    .audience h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(30px, 4vw, 42px);
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 12px;
-      text-wrap: balance;
-    }
-
-    .audience > .gold-line { margin: 20px auto 56px; }
-
-    .audience-cards {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      flex-wrap: wrap;
-      max-width: 1140px;
-      margin: 0 auto;
-    }
-
-    .audience-card {
-      background: linear-gradient(160deg, rgba(17,34,64,0.85), var(--navy-dark) 70%);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 40px 34px;
-      max-width: 340px;
-      flex: 1 1 280px;
-      text-align: left;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-card);
-      transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-    }
-    .audience-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--gold-gradient);
-      opacity: 0.75;
-      transition: opacity 0.3s;
-    }
-    .audience-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(201, 168, 76, 0.4);
-      box-shadow: var(--shadow-card-hover);
-    }
-    .audience-card:hover::before { opacity: 1; }
-
-    .audience-card .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-family: 'Crimson Pro', serif;
-      color: var(--gold);
-      margin-bottom: 18px;
-      padding: 6px 14px;
-      border: 1px solid var(--border-soft);
-      border-radius: 999px;
-      background: rgba(201, 168, 76, 0.06);
-    }
-
-    .audience-card .card-flag {
-      font-size: 20px;
-      line-height: 1;
-    }
-
-    .audience-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      color: var(--white);
-      margin-bottom: 14px;
-      line-height: 1.3;
-    }
-
-    .audience-card p {
-      font-size: 15.5px;
-      color: var(--muted);
-      line-height: 1.8;
-      font-weight: 300;
-    }
+    .audience-item .label { margin-bottom: 6px; }
+    .audience-item h3 { font-size: 23px; margin-bottom: 10px; }
+    .audience-item p { color: var(--muted); }
 
     /* ── HOW IT WORKS ── */
-    .how {
-      background:
-        radial-gradient(700px 320px at 50% 0%, rgba(201,168,76,0.05), transparent 70%),
-        var(--navy-dark);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 100px 60px;
-      text-align: center;
+    .steps {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
     }
+    .steps li { border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 22px; }
+    .step-num {
+      display: block;
+      font-family: var(--serif);
+      font-size: 34px;
+      line-height: 1;
+      color: var(--gold-on-dark);
+      margin-bottom: 14px;
+    }
+    .steps h3 { font-size: 22px; margin-bottom: 8px; }
 
-    .how h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(30px, 4vw, 42px);
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 6px;
-      text-wrap: balance;
-    }
-
-    .how-sub {
-      font-size: 17px;
-      color: var(--dim);
-      margin-bottom: 12px;
-      font-weight: 300;
-    }
-
-    .how > .gold-line { margin: 20px auto 60px; }
-
-    .how-steps {
-      display: flex;
-      justify-content: center;
-      gap: 0;
-      max-width: 1000px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-      position: relative;
-    }
-
-    .how-steps::before {
-      content: '';
-      position: absolute;
-      top: 38px;
-      left: calc(16.66% + 24px);
-      right: calc(16.66% + 24px);
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(201,168,76,0.5) 20%, rgba(201,168,76,0.5) 80%, transparent);
-      pointer-events: none;
-    }
-
-    .how-step {
-      flex: 1 1 260px;
-      max-width: 320px;
-      padding: 0 28px;
-      text-align: center;
-      position: relative;
-    }
-
-    .how-step-num {
-      width: 76px;
-      height: 76px;
-      border: 1.5px solid rgba(201, 168, 76, 0.65);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 26px;
-      font-family: 'Playfair Display', serif;
-      font-size: 23px;
-      font-weight: 700;
-      font-style: italic;
-      color: var(--gold-light);
-      background:
-        radial-gradient(circle at 32% 28%, rgba(201,168,76,0.16), transparent 65%),
-        var(--navy-dark);
-      box-shadow: 0 0 0 7px var(--navy-dark), 0 0 0 8px rgba(201,168,76,0.15), 0 10px 24px -8px rgba(2,8,20,0.7);
-      position: relative;
-      z-index: 1;
-      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), color 0.3s;
-    }
-    .how-step:hover .how-step-num {
-      transform: translateY(-4px);
-      color: var(--gold-pale);
-      box-shadow: 0 0 0 7px var(--navy-dark), 0 0 0 8px rgba(201,168,76,0.35), 0 16px 32px -10px rgba(2,8,20,0.8);
-    }
-
-    .how-step h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 21px;
-      color: var(--white);
-      margin-bottom: 12px;
-    }
-
-    .how-step p {
-      font-size: 15.5px;
-      color: var(--muted);
-      line-height: 1.75;
-      font-weight: 300;
-    }
-
-    /* ── DISCLAIMER ── */
-    .disclaimer {
-      background-color: var(--navy-deep);
-      border-top: 1px solid var(--border);
-      padding: 18px 60px;
-      text-align: center;
-      font-size: 13px;
-      color: var(--dim);
-      line-height: 1.7;
-      font-family: 'Crimson Pro', serif;
-    }
-    .disclaimer span {
-      color: var(--gold);
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-size: 11.5px;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background-color: var(--navy-deep);
-      border-top: 1px solid var(--border-soft);
-      padding: 26px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 13.5px;
-      color: var(--dim);
-      flex-wrap: wrap;
-      gap: 14px;
-      font-family: 'Crimson Pro', serif;
-    }
-    footer a {
-      color: var(--gold);
-      text-decoration: none;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-    footer a:hover { color: var(--gold-light); text-decoration: underline; text-underline-offset: 4px; }
-
-    /* ── SCROLL REVEAL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-      transition-delay: var(--d, 0ms);
-    }
-    .reveal.in {
-      opacity: 1;
-      transform: none;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
-      .reveal { opacity: 1; transform: none; }
-    }
-
-    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .cover-grid { grid-template-columns: repeat(2, 1fr); }
-      .how-steps::before { display: none; }
-      .how-step { padding-bottom: 48px; }
+      .topic-grid { grid-template-columns: repeat(2, 1fr); }
+      .mission-grid, .audience-grid, .steps { grid-template-columns: 1fr; }
+      .mission-item,
+      .mission-item:first-child,
+      .mission-item:last-child { padding: 26px 0; border-left: none; border-top: 1px solid var(--line); }
+      .mission-item:first-child { border-top: none; }
+      .audience-grid, .steps { gap: 32px; }
     }
-
     @media (max-width: 700px) {
-      header { padding: 16px 20px; flex-direction: column; gap: 12px; }
-      nav { justify-content: center; gap: 2px; }
-      nav a { padding: 8px 10px; font-size: 12.5px; }
-      .hero { padding: 80px 24px 64px; }
-      .hero p { font-size: 18px; }
-      .mission-strip { padding: 48px 24px; gap: 40px; }
-      .cover { padding: 72px 24px; }
-      .cover-grid { grid-template-columns: 1fr; }
-      .audience { padding: 72px 24px; }
-      .audience-card { max-width: 100%; }
-      .how { padding: 72px 24px; }
-      .how-step { padding: 0 16px 48px; }
-      footer { padding: 20px 24px; flex-direction: column; text-align: center; }
-      .disclaimer { padding: 16px 24px; }
+      .home-hero { padding: 72px 0 76px; }
+      .home-hero::before { background: rgba(14, 31, 58, 0.86); }
+      .home-hero p { font-size: 18px; }
+      .topic-grid { grid-template-columns: 1fr; gap: 40px; }
     }
   </style>
 </head>
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <!-- Header -->
-  <header>
-    <div class="logo">
-      <span class="logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 6l7-3 7 3"/><path d="M5 6l-3 7a4 4 0 0 0 6 0L5 6z"/><path d="M19 6l-3 7a4 4 0 0 0 6 0l-3-7z"/><path d="M8 21h8"/></svg>
-      </span>
-      Understanding <span>Your Rights</span>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/logo-256.png" alt="" width="46" height="46"/>
+        <span>Understanding Your Rights</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg class="icon icon-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="How-tos.html">How To</a>
+        <a href="contact.html">Contact</a>
+        <a href="donate.html" class="nav-donate">Donate</a>
+      </nav>
     </div>
-    <nav>
-      <a href="about.html">About</a>
-      <a href="resources.html">Resources</a>
-      <a href="contact.html">Contact</a>
-      <a href="How-tos.html">How to</a>
-      <a href="donate.html" class="donate-btn">Donate</a>
-    </nav>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <svg class="hero-watermark" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 6l7-3 7 3"/><path d="M5 6l-3 7a4 4 0 0 0 6 0L5 6z"/><path d="M19 6l-3 7a4 4 0 0 0 6 0l-3-7z"/><path d="M8 21h8"/></svg>
-    <div class="hero-eyebrow reveal">Community · Education · Empowerment</div>
-    <h1 class="reveal" style="--d:80ms">You deserve to know your <span>Rights</span></h1>
-    <div class="gold-line reveal" style="--d:160ms"></div>
-    <p class="reveal" style="--d:240ms">
-      Every person, regardless of background, language, or circumstance,
-      deserves to know the rights that protect them. We translate complex
-      legal protections into plain, accessible language that everyday people
-      can actually use — for free, for everyone.
-    </p>
-    <a href="resources.html" class="hero-cta reveal" style="--d:320ms">
-      Explore Resources
-      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
-    </a>
-  </section>
+  <main id="main">
 
-  <!-- Mission Strip -->
-  <section class="mission-strip">
-    <div class="mission-item reveal">
-      <span class="icon">📖</span>
-      <h3>Know Your Rights</h3>
-      <p>Plain-language guides based on official legal sources, available in English and Spanish.</p>
-    </div>
-    <div class="mission-item reveal" style="--d:120ms">
-      <span class="icon">🤝</span>
-      <h3>Community First</h3>
-      <p>Built by and for the community — we meet people where they are, on the ground.</p>
-    </div>
-    <div class="mission-item reveal" style="--d:240ms">
-      <span class="icon">⚖️</span>
-      <h3>For Everyone</h3>
-      <p>Regardless of immigration status, income, or background — knowledge belongs to all.</p>
-    </div>
-  </section>
-
-  <!-- What We Cover -->
-  <section class="cover">
-    <div class="cover-eyebrow reveal">What We Cover</div>
-    <h2 class="reveal" style="--d:80ms">Six areas of law.</h2>
-    <p class="cover-sub reveal" style="--d:140ms">Plain language. Accessible.</p>
-    <div class="gold-line reveal" style="--d:200ms"></div>
-
-    <div class="cover-grid">
-
-      <a href="resources.html" class="cover-card reveal">
-        <div class="cover-card-top">
-          <span class="cover-card-emoji">🚔</span>
-          <span class="cover-card-num">01</span>
+    <!-- Hero -->
+    <section class="home-hero">
+      <img src="https://images.unsplash.com/photo-1729041534038-fdc1f9cf3d3a?auto=format&fit=crop&w=1600&q=70"
+           srcset="https://images.unsplash.com/photo-1729041534038-fdc1f9cf3d3a?auto=format&fit=crop&w=800&q=70 800w,
+                   https://images.unsplash.com/photo-1729041534038-fdc1f9cf3d3a?auto=format&fit=crop&w=1600&q=70 1600w,
+                   https://images.unsplash.com/photo-1729041534038-fdc1f9cf3d3a?auto=format&fit=crop&w=2400&q=70 2400w"
+           sizes="100vw" alt="" fetchpriority="high"/>
+      <div class="container">
+        <div class="home-hero-content">
+          <div class="label">Community · Education · Empowerment</div>
+          <h1>You deserve to know your Rights</h1>
+          <p>
+            Every person, regardless of background, language, or circumstance,
+            deserves to know the rights that protect them. We translate complex
+            legal protections into plain, accessible language that everyday people
+            can actually use — for free, for everyone.
+          </p>
+          <a href="resources.html" class="button button--gold">Explore Resources</a>
         </div>
-        <h3>Police Encounters</h3>
-        <p>Stops, searches, arrests, Miranda rights, and what officers can and cannot legally do.</p>
-        <span class="cover-card-link">Read More →</span>
-      </a>
-
-      <a href="resources.html" class="cover-card reveal" style="--d:90ms">
-        <div class="cover-card-top">
-          <span class="cover-card-emoji">🏛️</span>
-          <span class="cover-card-num">02</span>
-        </div>
-        <h3>ICE & Immigration</h3>
-        <p>ICE authority, home entry, valid warrants, and your rights during enforcement encounters.</p>
-        <span class="cover-card-link">Read More →</span>
-      </a>
-
-      <a href="resources.html" class="cover-card reveal" style="--d:180ms">
-        <div class="cover-card-top">
-          <span class="cover-card-emoji">💼</span>
-          <span class="cover-card-num">03</span>
-        </div>
-        <h3>Workers' Rights</h3>
-        <p>Wages, overtime, safety, discrimination, retaliation, and unemployment protections.</p>
-        <span class="cover-card-link">Read More →</span>
-      </a>
-
-      <a href="resources.html" class="cover-card reveal">
-        <div class="cover-card-top">
-          <span class="cover-card-emoji">🏠</span>
-          <span class="cover-card-num">04</span>
-        </div>
-        <h3>Housing Rights</h3>
-        <p>Eviction rules, fair housing, security deposits, and what landlords cannot do.</p>
-        <span class="cover-card-link">Read More →</span>
-      </a>
-
-      <a href="resources.html" class="cover-card reveal" style="--d:90ms">
-        <div class="cover-card-top">
-          <span class="cover-card-emoji">🏥</span>
-          <span class="cover-card-num">05</span>
-        </div>
-        <h3>Healthcare Rights</h3>
-        <p>Emergency care, insurance, billing rights, HIPAA privacy, and public programs.</p>
-        <span class="cover-card-link">Read More →</span>
-      </a>
-
-      <a href="resources.html" class="cover-card reveal" style="--d:180ms">
-        <div class="cover-card-top">
-          <span class="cover-card-emoji">🎓</span>
-          <span class="cover-card-num">06</span>
-        </div>
-        <h3>Education Rights</h3>
-        <p>K–12 enrollment, IEPs, language access, school discipline, and college rights.</p>
-        <span class="cover-card-link">Read More →</span>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- Who This Is For -->
-  <section class="audience">
-    <div class="audience-eyebrow reveal">Who This Is For</div>
-    <h2 class="reveal" style="--d:80ms">This site is for everyone.</h2>
-    <div class="gold-line reveal" style="--d:160ms"></div>
-
-    <div class="audience-cards">
-
-      <div class="audience-card reveal">
-        <div class="status-badge">
-          <span class="card-flag"></span> Status
-        </div>
-        <h3>U.S. Citizens</h3>
-        <p>Know your full constitutional protections during police encounters, at work, at home, and in school. Your rights are broad — and knowing them matters.</p>
       </div>
+    </section>
 
-      <div class="audience-card reveal" style="--d:120ms">
-        <div class="status-badge">
-          <span class="card-flag"></span> Status
+    <!-- Mission -->
+    <section class="mission">
+      <div class="container mission-grid">
+        <div class="mission-item">
+          <h3>Know Your Rights</h3>
+          <p>Plain-language guides based on official legal sources, available in English and Spanish.</p>
         </div>
-        <h3>Green Card Holders</h3>
-        <p>Understand where your rights match citizens and where key differences exist. Immigration consequences can follow legal situations — know both systems.</p>
-      </div>
-
-      <div class="audience-card reveal" style="--d:240ms">
-        <div class="status-badge">
-          <span class="card-flag"></span> Status
+        <div class="mission-item">
+          <h3>Community First</h3>
+          <p>Built by and for the community — we meet people where they are, on the ground.</p>
         </div>
-        <h3>Undocumented Immigrants</h3>
-        <p>You have rights too. The U.S. Constitution protects everyone on American soil. Find out exactly what protections apply to you — regardless of status.</p>
+        <div class="mission-item">
+          <h3>For Everyone</h3>
+          <p>Regardless of immigration status, income, or background — knowledge belongs to all.</p>
+        </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- What We Cover -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="label">What We Cover</div>
+          <h2>Six areas of law.</h2>
+          <p class="lede">Plain language. Accessible.</p>
+        </div>
 
-  <!-- How It Works -->
-  <section class="how">
-    <div class="how-eyebrow reveal">How It Works</div>
-    <h2 class="reveal" style="--d:80ms">Simple, Free, No strings attached.</h2>
-    <p class="how-sub"></p>
-    <div class="gold-line reveal" style="--d:160ms"></div>
+        <div class="topic-grid">
+          <a href="resources.html#police" class="topic">
+            <img src="https://images.unsplash.com/photo-1608095476825-d4e0f916372f?auto=format&fit=crop&w=700&q=70"
+                 srcset="https://images.unsplash.com/photo-1608095476825-d4e0f916372f?auto=format&fit=crop&w=700&q=70 700w,
+                         https://images.unsplash.com/photo-1608095476825-d4e0f916372f?auto=format&fit=crop&w=1100&q=70 1100w"
+                 sizes="(max-width: 700px) 100vw, (max-width: 900px) 50vw, 360px"
+                 alt="Police light bar flashing red and blue at night" loading="lazy"/>
+            <span class="topic-num">01</span>
+            <h3>Police Encounters</h3>
+            <p>Stops, searches, arrests, Miranda rights, and what officers can and cannot legally do.</p>
+            <span class="topic-link">Read More</span>
+          </a>
 
-    <div class="how-steps">
+          <a href="resources.html#ice" class="topic">
+            <img src="https://images.unsplash.com/photo-1629999400001-5e666f0754d9?auto=format&fit=crop&w=700&q=70"
+                 srcset="https://images.unsplash.com/photo-1629999400001-5e666f0754d9?auto=format&fit=crop&w=700&q=70 700w,
+                         https://images.unsplash.com/photo-1629999400001-5e666f0754d9?auto=format&fit=crop&w=1100&q=70 1100w"
+                 sizes="(max-width: 700px) 100vw, (max-width: 900px) 50vw, 360px"
+                 alt="Wooden front door of a home" loading="lazy"/>
+            <span class="topic-num">02</span>
+            <h3>ICE &amp; Immigration</h3>
+            <p>ICE authority, home entry, valid warrants, and your rights during enforcement encounters.</p>
+            <span class="topic-link">Read More</span>
+          </a>
 
-      <div class="how-step reveal">
-        <div class="how-step-num">01</div>
-        <h3>Pick a Topic</h3>
-        <p>Choose the area of law that you would like to learn more about from our Resources page.</p>
+          <a href="resources.html#workers" class="topic">
+            <img src="https://images.unsplash.com/photo-1694521787193-9293daeddbaa?auto=format&fit=crop&w=700&q=70"
+                 srcset="https://images.unsplash.com/photo-1694521787193-9293daeddbaa?auto=format&fit=crop&w=700&q=70 700w,
+                         https://images.unsplash.com/photo-1694521787193-9293daeddbaa?auto=format&fit=crop&w=1100&q=70 1100w"
+                 sizes="(max-width: 700px) 100vw, (max-width: 900px) 50vw, 360px"
+                 alt="Construction workers in hard hats and safety vests" loading="lazy" style="object-position: center 30%"/>
+            <span class="topic-num">03</span>
+            <h3>Workers' Rights</h3>
+            <p>Wages, overtime, safety, discrimination, retaliation, and unemployment protections.</p>
+            <span class="topic-link">Read More</span>
+          </a>
+
+          <a href="resources.html#housing" class="topic">
+            <img src="https://images.unsplash.com/photo-1580216643062-cf460548a66a?auto=format&fit=crop&w=700&q=70"
+                 srcset="https://images.unsplash.com/photo-1580216643062-cf460548a66a?auto=format&fit=crop&w=700&q=70 700w,
+                         https://images.unsplash.com/photo-1580216643062-cf460548a66a?auto=format&fit=crop&w=1100&q=70 1100w"
+                 sizes="(max-width: 700px) 100vw, (max-width: 900px) 50vw, 360px"
+                 alt="Apartment building against a blue sky" loading="lazy"/>
+            <span class="topic-num">04</span>
+            <h3>Housing Rights</h3>
+            <p>Eviction rules, fair housing, security deposits, and what landlords cannot do.</p>
+            <span class="topic-link">Read More</span>
+          </a>
+
+          <a href="resources.html#healthcare" class="topic">
+            <img src="https://images.unsplash.com/photo-1777269749032-d8d458ae594d?auto=format&fit=crop&w=700&q=70"
+                 srcset="https://images.unsplash.com/photo-1777269749032-d8d458ae594d?auto=format&fit=crop&w=700&q=70 700w,
+                         https://images.unsplash.com/photo-1777269749032-d8d458ae594d?auto=format&fit=crop&w=1100&q=70 1100w"
+                 sizes="(max-width: 700px) 100vw, (max-width: 900px) 50vw, 360px"
+                 alt="Hospital corridor with benches" loading="lazy"/>
+            <span class="topic-num">05</span>
+            <h3>Healthcare Rights</h3>
+            <p>Emergency care, insurance, billing rights, HIPAA privacy, and public programs.</p>
+            <span class="topic-link">Read More</span>
+          </a>
+
+          <a href="resources.html#education" class="topic">
+            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=700&q=70"
+                 srcset="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=700&q=70 700w,
+                         https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1100&q=70 1100w"
+                 sizes="(max-width: 700px) 100vw, (max-width: 900px) 50vw, 360px"
+                 alt="Classroom with desks and a chalkboard" loading="lazy"/>
+            <span class="topic-num">06</span>
+            <h3>Education Rights</h3>
+            <p>K–12 enrollment, IEPs, language access, school discipline, and college rights.</p>
+            <span class="topic-link">Read More</span>
+          </a>
+        </div>
       </div>
+    </section>
 
-      <div class="how-step reveal" style="--d:120ms">
-        <div class="how-step-num">02</div>
-        <h3>Find Your Status</h3>
-        <p>Each topic has separate sections for citizens, green card holders, and undocumented immigrants.</p>
-      </div>
+    <!-- Who This Is For -->
+    <section class="section section--sand">
+      <div class="container">
+        <div class="section-head">
+          <div class="label">Who This Is For</div>
+          <h2>This site is for everyone.</h2>
+        </div>
 
-      <div class="how-step reveal" style="--d:240ms">
-        <div class="how-step-num">03</div>
-        <h3>Read & Share</h3>
-        <p>All information is completely free to use. Print it, share it, and spread it to anyone who needs it.</p>
+        <div class="audience-grid">
+          <div class="audience-item">
+            <div class="label">Status</div>
+            <h3>U.S. Citizens</h3>
+            <p>Know your full constitutional protections during police encounters, at work, at home, and in school. Your rights are broad — and knowing them matters.</p>
+          </div>
+          <div class="audience-item">
+            <div class="label">Status</div>
+            <h3>Green Card Holders</h3>
+            <p>Understand where your rights match citizens and where key differences exist. Immigration consequences can follow legal situations — know both systems.</p>
+          </div>
+          <div class="audience-item">
+            <div class="label">Status</div>
+            <h3>Undocumented Immigrants</h3>
+            <p>You have rights too. The U.S. Constitution protects everyone on American soil. Find out exactly what protections apply to you — regardless of status.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section section--navy">
+      <div class="container">
+        <div class="section-head">
+          <div class="label">How It Works</div>
+          <h2>Simple, Free, No strings attached.</h2>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <span class="step-num">01</span>
+            <h3>Pick a Topic</h3>
+            <p>Choose the area of law that you would like to learn more about from our Resources page.</p>
+          </li>
+          <li>
+            <span class="step-num">02</span>
+            <h3>Find Your Status</h3>
+            <p>Each topic has separate sections for citizens, green card holders, and undocumented immigrants.</p>
+          </li>
+          <li>
+            <span class="step-num">03</span>
+            <h3>Read &amp; Share</h3>
+            <p>All information is completely free to use. Print it, share it, and spread it to anyone who needs it.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
 
   <!-- Disclaimer -->
-  <div class="disclaimer">
-    <span>Disclaimer:</span> The information provided on this website is for
-    <strong>educational purposes only</strong> and does not constitute legal advice.
-    For advice specific to your situation, please consult a licensed attorney.
+  <div class="site-disclaimer">
+    <div class="container">
+      <span>Disclaimer:</span> The information provided on this website is for
+      <strong>educational purposes only</strong> and does not constitute legal advice.
+      For advice specific to your situation, please consult a licensed attorney.
+    </div>
   </div>
 
   <!-- Footer -->
-  <footer>
-    <span>© 2026 Understanding Your Rights. All rights reserved.</span>
-    <div>
-      <a href="about.html">About</a> &nbsp;|&nbsp;
-      <a href="resources.html">Resources</a> &nbsp;|&nbsp;
-      <a href="contact.html">Contact</a> &nbsp;|&nbsp;
-      <a href="donate.html">Donate</a> &nbsp;|&nbsp;
-      <a href="How-tos.html">How to</a>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <a href="index.html" class="footer-brand">
+          <img src="images/logo-256.png" alt="" width="56" height="56"/>
+          <span>Understanding Your Rights</span>
+        </a>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="about.html">About</a>
+          <a href="resources.html">Resources</a>
+          <a href="How-tos.html">How To</a>
+          <a href="contact.html">Contact</a>
+          <a href="donate.html">Donate</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">© 2026 Understanding Your Rights. All rights reserved.</div>
     </div>
   </footer>
 
-  <script>
-    (function () {
-      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var items = document.querySelectorAll('.reveal');
-      if (reduced || !('IntersectionObserver' in window)) {
-        items.forEach(function (el) { el.classList.add('in'); });
-        return;
-      }
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in');
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      items.forEach(function (el) { io.observe(el); });
-    })();
-  </script>
-
+  <script src="site.js"></script>
 </body>
 </html>

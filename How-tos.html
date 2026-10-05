@@ -1,612 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resources — Understanding Your Rights</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #0a1628;
-    --navy-mid: #112240;
-    --navy-dark: #071020;
-    --gold: #c9a84c;
-    --gold-light: #e0bf74;
-    --white: #ffffff;
-    --muted: #a8b8d0;
-    --dim: #6b7f96;
-    --border: #1e3a5f;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How To — Understanding Your Rights</title>
+  <meta name="description" content="Plain-language guides to the legal protections every person carries — regardless of background, status, or circumstance."/>
+  <link rel="icon" type="image/png" href="images/favicon.png"/>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    html { scroll-padding-top: calc(var(--header-h) + 64px); }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+    /* ── SECTION NAV ── */
+    .section-nav {
+      position: sticky;
+      top: var(--header-h);
+      z-index: 150;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+    .section-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .section-nav ul::-webkit-scrollbar { display: none; }
+    .section-nav a {
+      display: block;
+      white-space: nowrap;
+      padding: 15px 0 13px;
+      border-bottom: 3px solid transparent;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .section-nav a:hover { color: var(--navy); }
+    .section-nav a.active { color: var(--navy); font-weight: 600; border-bottom-color: var(--gold); }
+    @media (max-width: 900px) {
+      .section-nav ul {
+        gap: 22px;
+        -webkit-mask-image: linear-gradient(to right, #000 85%, transparent);
+                mask-image: linear-gradient(to right, #000 85%, transparent);
+      }
+      .section-nav ul::after { content: ''; flex: 0 0 40px; }
+    }
 
-  body {
-    font-family: 'Crimson Pro', Georgia, serif;
-    background-color: var(--navy);
-    color: var(--white);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+    /* ── GUIDE SECTIONS ── */
+    .rights-section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+    .rights-section:last-child { border-bottom: none; padding-bottom: 88px; }
 
-  /* ── HEADER ── */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 22px 60px;
-    background-color: var(--navy);
-    border-bottom: 2px solid var(--gold);
-    position: sticky;
-    top: 0;
-    z-index: 200;
-  }
+    .section-header {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .section-number {
+      font-family: var(--serif);
+      font-size: 34px;
+      line-height: 1.1;
+      color: var(--gold-text);
+      font-variant-numeric: tabular-nums;
+    }
+    .section-header .label { margin-bottom: 4px; }
+    .section-header h2 { font-size: clamp(26px, 3vw, 34px); }
+    .section-desc { font-size: 18px; color: var(--muted); margin-top: 6px; max-width: 62ch; }
 
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    color: var(--white);
-    line-height: 1.3;
-    text-decoration: none;
-  }
-  .logo span { color: var(--gold); }
+    .guides-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 40px;
+      margin-left: 72px;
+      border-bottom: 1px solid var(--line);
+    }
+    .guide-card {
+      display: grid;
+      grid-template-columns: 36px 1fr auto;
+      align-items: baseline;
+      gap: 12px;
+      padding: 18px 8px 18px 0;
+      border-top: 1px solid var(--line);
+      cursor: pointer;
+    }
+    .guide-card:hover { background: var(--sand); }
+    .guide-card:hover .guide-title { text-decoration: underline; text-underline-offset: 3px; }
+    .guide-number { font-size: 14px; font-weight: 600; color: var(--faint); font-variant-numeric: tabular-nums; padding-left: 8px; }
+    .guide-title {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--navy);
+    }
+    .guide-arrow { font-size: 14px; font-weight: 600; color: var(--blue); white-space: nowrap; }
 
-  nav {
-    display: flex;
-    gap: 36px;
-    align-items: center;
-  }
-  nav a {
-    color: var(--gold);
-    text-decoration: none;
-    font-family: 'Crimson Pro', serif;
-    font-size: 14px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: color 0.2s;
-  }
-  nav a:hover { color: var(--white); }
-  nav a.donate-btn {
-    background-color: var(--gold);
-    color: var(--navy);
-    padding: 8px 22px;
-    border-radius: 2px;
-    font-weight: 700;
-    transition: background-color 0.2s, color 0.2s;
-  }
-  nav a.donate-btn:hover { background-color: var(--white); color: var(--navy); }
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      padding: 40px 16px;
+      overflow-y: auto;
+      align-items: flex-start;
+      justify-content: center;
+      background: rgba(14, 31, 58, 0.6);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+      background: var(--paper);
+      border-top: 4px solid var(--navy);
+      border-radius: 2px;
+      box-shadow: 0 20px 50px rgba(14, 31, 58, 0.35);
+    }
+    .modal-head { padding: 30px 72px 18px 36px; border-bottom: 1px solid var(--line); }
+    .modal-tag { margin-bottom: 6px; }
+    .modal-title { font-size: clamp(23px, 3vw, 28px); }
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 3px;
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .modal-close:hover { background: var(--sand); }
+    .modal-close .icon { width: 18px; height: 18px; }
 
-  /* ── PAGE HERO ── */
-  .page-hero {
-    background: linear-gradient(to bottom, var(--navy-dark) 0%, var(--navy-mid) 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 64px 60px 52px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .page-hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: radial-gradient(circle at 20% 50%, rgba(201,168,76,0.04) 0%, transparent 60%),
-                      radial-gradient(circle at 80% 20%, rgba(201,168,76,0.03) 0%, transparent 50%);
-    pointer-events: none;
-  }
-  .page-hero-eyebrow {
-    font-size: 12px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-  .page-hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 5vw, 3.6rem);
-    font-weight: 900;
-    color: var(--white);
-    line-height: 1.15;
-    margin-bottom: 8px;
-  }
-  .page-hero h1 span { color: var(--gold); }
-  .gold-line {
-    width: 70px; height: 3px;
-    background-color: var(--gold);
-    margin: 22px auto 20px;
-  }
-  .page-hero p {
-    font-size: 18px;
-    color: var(--muted);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.8;
-    font-weight: 300;
-  }
+    .modal-body { padding: 8px 36px 32px; }
+    .modal-steps { list-style: none; counter-reset: steps; }
+    .modal-steps li {
+      counter-increment: steps;
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 10px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    .modal-steps li:last-child { border-bottom: none; }
+    .modal-steps li::before {
+      content: counter(steps) ".";
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .modal-disclaimer {
+      margin-top: 14px;
+      padding: 16px 20px;
+      background: var(--sand);
+      border-left: 3px solid var(--gold);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .modal-disclaimer strong { display: block; color: var(--ink); margin-bottom: 2px; }
 
-  /* ── SECTION NAV ── */
-  .section-nav {
-    position: sticky;
-    top: 66px;
-    z-index: 100;
-    background-color: var(--navy-dark);
-    border-bottom: 2px solid var(--gold);
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .section-nav::-webkit-scrollbar { display: none; }
-  .section-nav ul {
-    list-style: none;
-    display: flex;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    white-space: nowrap;
-  }
-  .section-nav a {
-    display: block;
-    padding: 0.85rem 1.1rem;
-    color: var(--dim);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: color 0.2s, border-color 0.2s;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
-    font-family: 'Crimson Pro', serif;
-  }
-  .section-nav a:hover {
-    color: var(--gold);
-    border-bottom-color: var(--gold);
-  }
-
-  /* ── LAYOUT ── */
-  main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 60px;
-  }
-
-  /* ── SECTION ── */
-  .rights-section {
-    padding: 64px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .rights-section:last-child { border-bottom: none; }
-
-  .section-header {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.5rem;
-    align-items: start;
-    margin-bottom: 2.5rem;
-  }
-
-  .section-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 4.5rem;
-    font-weight: 900;
-    line-height: 1;
-    color: var(--border);
-    letter-spacing: -0.04em;
-    margin-top: -0.1rem;
-    user-select: none;
-  }
-
-  .section-title-group {}
-  .section-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 6px;
-    display: block;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.7rem, 3vw, 2.4rem);
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.15;
-  }
-  .section-desc {
-    font-size: 16px;
-    color: var(--dim);
-    margin-top: 6px;
-    font-weight: 300;
-    max-width: 55ch;
-    line-height: 1.6;
-  }
-
-  /* ── GUIDE CARDS GRID ── */
-  .guides-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-  }
-
-  .guide-card {
-    background-color: var(--navy-dark);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 26px 24px;
-    cursor: pointer;
-    transition: border-color 0.2s, transform 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .guide-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background-color: var(--gold);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-  }
-  .guide-card:hover {
-    border-color: var(--gold);
-    transform: translateY(-3px);
-  }
-  .guide-card:hover::before { transform: scaleX(1); }
-  .guide-card:hover .guide-arrow { color: var(--gold-light); transform: translateX(3px); }
-
-  .guide-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--dim);
-    margin-bottom: 10px;
-    display: block;
-    font-weight: 700;
-  }
-  .guide-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.35;
-    margin-bottom: 14px;
-  }
-  .guide-arrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    transition: color 0.2s, transform 0.2s;
-  }
-  .guide-arrow svg { width: 13px; height: 13px; flex-shrink: 0; }
-
-  /* ── MODAL ── */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(7,16,32,0.85);
-    z-index: 500;
-    padding: 2rem 1rem;
-    overflow-y: auto;
-    align-items: flex-start;
-    justify-content: center;
-    backdrop-filter: blur(4px);
-  }
-  .modal-overlay.open {
-    display: flex;
-    animation: fadeIn 0.2s ease;
-  }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-  .modal {
-    background: var(--navy-mid);
-    border: 1px solid var(--border);
-    border-top: 4px solid var(--gold);
-    border-radius: 4px;
-    max-width: 680px;
-    width: 100%;
-    position: relative;
-    margin: auto;
-    animation: slideUp 0.25s ease;
-  }
-  @keyframes slideUp {
-    from { transform: translateY(24px); opacity: 0; }
-    to   { transform: translateY(0); opacity: 1; }
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 14px; right: 14px;
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    cursor: pointer;
-    width: 32px; height: 32px;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--dim);
-    font-size: 1.2rem;
-    transition: color 0.2s, border-color 0.2s;
-    line-height: 1;
-  }
-  .modal-close:hover { color: var(--gold); border-color: var(--gold); }
-
-  .modal-tag {
-    background-color: var(--gold);
-    color: var(--navy);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 5px 16px;
-    display: inline-block;
-    font-family: 'Crimson Pro', serif;
-  }
-
-  .modal-body { padding: 1.5rem 2.5rem 2.5rem; }
-
-  .modal-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.4rem, 3vw, 1.9rem);
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    padding-right: 2rem;
-  }
-
-  .modal-steps {
-    list-style: none;
-    counter-reset: steps;
-  }
-  .modal-steps li {
-    counter-increment: steps;
-    display: grid;
-    grid-template-columns: 2rem 1fr;
-    gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--muted);
-    font-weight: 300;
-  }
-  .modal-steps li:last-child { border-bottom: none; }
-  .modal-steps li::before {
-    content: counter(steps);
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--gold);
-    line-height: 1.6;
-  }
-
-  .modal-disclaimer {
-    margin-top: 1.5rem;
-    padding: 14px 16px;
-    background: var(--navy-dark);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold);
-    font-size: 13px;
-    color: var(--dim);
-    line-height: 1.55;
-  }
-  .modal-disclaimer strong {
-    color: var(--gold);
-    display: block;
-    margin-bottom: 4px;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  /* ── DISCLAIMER BAR ── */
-  .disclaimer-bar {
-    background-color: var(--navy-dark);
-    border-top: 1px solid var(--border);
-    padding: 16px 60px;
-    text-align: center;
-    font-size: 13px;
-    color: var(--dim);
-    line-height: 1.7;
-  }
-  .disclaimer-bar span { color: var(--gold); font-weight: 700; }
-
-  /* ── FOOTER ── */
-  footer {
-    background-color: var(--navy);
-    border-top: 2px solid var(--gold);
-    padding: 22px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-    color: var(--dim);
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  footer a {
-    color: var(--gold);
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: color 0.2s;
-  }
-  footer a:hover { color: var(--white); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    main { padding: 0 32px; }
-    header { padding: 18px 32px; }
-  }
-  @media (max-width: 700px) {
-    header { padding: 16px 20px; flex-direction: column; gap: 12px; }
-    .page-hero { padding: 48px 24px 40px; }
-    main { padding: 0 20px; }
-    .section-header { grid-template-columns: 1fr; gap: 0.4rem; }
-    .section-number { display: none; }
-    .guides-grid { grid-template-columns: 1fr; }
-    .modal-body { padding: 1.2rem 1.2rem 2rem; }
-    .disclaimer-bar, footer { padding: 14px 20px; }
-    footer { flex-direction: column; text-align: center; }
-    .section-nav { top: 56px; }
-  }
-</style>
+    @media (max-width: 900px) {
+      .guides-grid { grid-template-columns: 1fr; margin-left: 0; }
+    }
+    @media (max-width: 700px) {
+      .rights-section { padding: 48px 0; }
+      .section-header { grid-template-columns: 1fr; gap: 2px; }
+      .section-number { font-size: 26px; }
+      .guide-card { grid-template-columns: 30px 1fr; }
+      .guide-arrow { grid-column: 2; }
+      .modal-overlay { padding: 12px; }
+      .modal-head { padding: 22px 64px 16px 20px; }
+      .modal-close { top: 14px; right: 14px; }
+      .modal-body { padding: 4px 20px 24px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <a href="index.html" class="logo">Understanding <span>Your Rights</span></a>
-  <nav>
-    <a href="about.html">About</a>
-    <a href="resources.html">Resources</a>
-    <a href="contact.html">Contact</a>
-    <a href="index.html">Home</a>
-    <a href="donate.html" class="donate-btn">Donate</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/logo-256.png" alt="" width="46" height="46"/>
+        <span>Understanding Your Rights</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg class="icon icon-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="How-tos.html" aria-current="page">How To</a>
+        <a href="contact.html">Contact</a>
+        <a href="donate.html" class="nav-donate">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Head -->
+  <section class="page-head">
+    <div class="container">
+      <div class="label">Community · Education · Empowerment</div>
+      <h1>Know Your Rights</h1>
+      <p>Plain-language guides to the legal protections every person carries — regardless of background, status, or circumstance.</p>
+    </div>
+  </section>
+
+  <!-- Section Nav -->
+  <nav class="section-nav" aria-label="Jump to section">
+    <div class="container">
+      <ul>
+        <li><a href="#police">Police</a></li>
+        <li><a href="#ice">ICE &amp; Immigration</a></li>
+        <li><a href="#workers">Workers' Rights</a></li>
+        <li><a href="#housing">Housing</a></li>
+        <li><a href="#healthcare">Healthcare</a></li>
+        <li><a href="#education">Education</a></li>
+      </ul>
+    </div>
   </nav>
-</header>
 
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="page-hero-eyebrow">Community · Education · Empowerment</div>
-  <h1>Know Your <span>Rights</span></h1>
-  <div class="gold-line"></div>
-  <p>Plain-language guides to the legal protections every person carries — regardless of background, status, or circumstance.</p>
-</section>
+  <main id="main">
+    <div class="container">
 
-<!-- SECTION NAV -->
-<nav class="section-nav" aria-label="Jump to section">
-  <ul>
-    <li><a href="#police">Police</a></li>
-    <li><a href="#ice">ICE &amp; Immigration</a></li>
-    <li><a href="#workers">Workers' Rights</a></li>
-    <li><a href="#housing">Housing</a></li>
-    <li><a href="#healthcare">Healthcare</a></li>
-    <li><a href="#education">Education</a></li>
-  </ul>
-</nav>
+      <!-- 01 POLICE -->
+      <section class="rights-section" id="police">
+        <div class="section-header">
+          <div class="section-number" aria-hidden="true">01</div>
+          <div>
+            <div class="label">Section One</div>
+            <h2>Police Encounters</h2>
+            <p class="section-desc">What to say, what to do, and what you're never required to give up — during stops, searches, and arrests.</p>
+          </div>
+        </div>
+        <div class="guides-grid" id="police-grid"></div>
+      </section>
 
-<main>
+      <!-- 02 ICE -->
+      <section class="rights-section" id="ice">
+        <div class="section-header">
+          <div class="section-number" aria-hidden="true">02</div>
+          <div>
+            <div class="label">Section Two</div>
+            <h2>ICE &amp; Immigration</h2>
+            <p class="section-desc">Your rights at the door, at the border, and everywhere in between — and how to protect your family.</p>
+          </div>
+        </div>
+        <div class="guides-grid" id="ice-grid"></div>
+      </section>
 
-  <!-- 01 POLICE -->
-  <section class="rights-section" id="police">
-    <div class="section-header">
-      <div class="section-number">01</div>
-      <div class="section-title-group">
-        <span class="section-label">Section One</span>
-        <h2 class="section-title">Police Encounters</h2>
-        <p class="section-desc">What to say, what to do, and what you're never required to give up — during stops, searches, and arrests.</p>
-      </div>
+      <!-- 03 WORKERS -->
+      <section class="rights-section" id="workers">
+        <div class="section-header">
+          <div class="section-number" aria-hidden="true">03</div>
+          <div>
+            <div class="label">Section Three</div>
+            <h2>Workers' Rights</h2>
+            <p class="section-desc">Federal and state law protections for every worker — whether or not you're a citizen.</p>
+          </div>
+        </div>
+        <div class="guides-grid" id="workers-grid"></div>
+      </section>
+
+      <!-- 04 HOUSING -->
+      <section class="rights-section" id="housing">
+        <div class="section-header">
+          <div class="section-number" aria-hidden="true">04</div>
+          <div>
+            <div class="label">Section Four</div>
+            <h2>Housing</h2>
+            <p class="section-desc">From lockouts to evictions — know the protections that keep a roof over your family's head.</p>
+          </div>
+        </div>
+        <div class="guides-grid" id="housing-grid"></div>
+      </section>
+
+      <!-- 05 HEALTHCARE -->
+      <section class="rights-section" id="healthcare">
+        <div class="section-header">
+          <div class="section-number" aria-hidden="true">05</div>
+          <div>
+            <div class="label">Section Five</div>
+            <h2>Healthcare</h2>
+            <p class="section-desc">Understand your bills, your coverage, and your right to care — without getting lost in the system.</p>
+          </div>
+        </div>
+        <div class="guides-grid" id="healthcare-grid"></div>
+      </section>
+
+      <!-- 06 EDUCATION -->
+      <section class="rights-section" id="education">
+        <div class="section-header">
+          <div class="section-number" aria-hidden="true">06</div>
+          <div>
+            <div class="label">Section Six</div>
+            <h2>Education</h2>
+            <p class="section-desc">Every child has the right to a public education. Here's how to protect it.</p>
+          </div>
+        </div>
+        <div class="guides-grid" id="education-grid"></div>
+      </section>
+
     </div>
-    <div class="guides-grid" id="police-grid"></div>
-  </section>
+  </main>
 
-  <!-- 02 ICE -->
-  <section class="rights-section" id="ice">
-    <div class="section-header">
-      <div class="section-number">02</div>
-      <div class="section-title-group">
-        <span class="section-label">Section Two</span>
-        <h2 class="section-title">ICE &amp; Immigration</h2>
-        <p class="section-desc">Your rights at the door, at the border, and everywhere in between — and how to protect your family.</p>
-      </div>
+  <!-- Disclaimer -->
+  <div class="site-disclaimer">
+    <div class="container">
+      <span>Disclaimer:</span> The information provided on this website is for <strong>educational purposes only</strong> and does not constitute legal advice. For advice specific to your situation, please consult a licensed attorney.
     </div>
-    <div class="guides-grid" id="ice-grid"></div>
-  </section>
-
-  <!-- 03 WORKERS -->
-  <section class="rights-section" id="workers">
-    <div class="section-header">
-      <div class="section-number">03</div>
-      <div class="section-title-group">
-        <span class="section-label">Section Three</span>
-        <h2 class="section-title">Workers' Rights</h2>
-        <p class="section-desc">Federal and state law protections for every worker — whether or not you're a citizen.</p>
-      </div>
-    </div>
-    <div class="guides-grid" id="workers-grid"></div>
-  </section>
-
-  <!-- 04 HOUSING -->
-  <section class="rights-section" id="housing">
-    <div class="section-header">
-      <div class="section-number">04</div>
-      <div class="section-title-group">
-        <span class="section-label">Section Four</span>
-        <h2 class="section-title">Housing</h2>
-        <p class="section-desc">From lockouts to evictions — know the protections that keep a roof over your family's head.</p>
-      </div>
-    </div>
-    <div class="guides-grid" id="housing-grid"></div>
-  </section>
-
-  <!-- 05 HEALTHCARE -->
-  <section class="rights-section" id="healthcare">
-    <div class="section-header">
-      <div class="section-number">05</div>
-      <div class="section-title-group">
-        <span class="section-label">Section Five</span>
-        <h2 class="section-title">Healthcare</h2>
-        <p class="section-desc">Understand your bills, your coverage, and your right to care — without getting lost in the system.</p>
-      </div>
-    </div>
-    <div class="guides-grid" id="healthcare-grid"></div>
-  </section>
-
-  <!-- 06 EDUCATION -->
-  <section class="rights-section" id="education">
-    <div class="section-header">
-      <div class="section-number">06</div>
-      <div class="section-title-group">
-        <span class="section-label">Section Six</span>
-        <h2 class="section-title">Education</h2>
-        <p class="section-desc">Every child has the right to a public education. Here's how to protect it.</p>
-      </div>
-    </div>
-    <div class="guides-grid" id="education-grid"></div>
-  </section>
-
-</main>
-
-<!-- DISCLAIMER -->
-<div class="disclaimer-bar">
-  <span>Disclaimer:</span> The information provided on this website is for <strong>educational purposes only</strong> and does not constitute legal advice. For advice specific to your situation, please consult a licensed attorney.
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <span>© 2026 Understanding Your Rights. All rights reserved.</span>
-  <div>
-    <a href="about.html">About</a> &nbsp;|&nbsp;
-    <a href="resources.html">Resources</a> &nbsp;|&nbsp;
-    <a href="contact.html">Contact</a> &nbsp;|&nbsp;
-    <a href="donate.html">Donate</a>
   </div>
-</footer>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <div class="modal">
-    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
-    <div id="modal-tag" class="modal-tag"></div>
-    <div class="modal-body">
-      <h2 class="modal-title" id="modal-title"></h2>
-      <ol class="modal-steps" id="modal-steps"></ol>
-      <div class="modal-disclaimer">
-        <strong>Important Note</strong>
-        This guide is based on federal law and general legal principles. State laws vary. This is education, not legal advice — if you are facing a legal situation, contact an attorney or legal aid organization.
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <a href="index.html" class="footer-brand">
+          <img src="images/logo-256.png" alt="" width="56" height="56"/>
+          <span>Understanding Your Rights</span>
+        </a>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="about.html">About</a>
+          <a href="resources.html">Resources</a>
+          <a href="How-tos.html">How To</a>
+          <a href="contact.html">Contact</a>
+          <a href="donate.html">Donate</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">© 2026 Understanding Your Rights. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <div class="modal-head">
+        <div id="modal-tag" class="label modal-tag"></div>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <button class="modal-close" id="modal-close" aria-label="Close">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ol class="modal-steps" id="modal-steps"></ol>
+        <div class="modal-disclaimer">
+          <strong>Important Note</strong>
+          This guide is based on federal law and general legal principles. State laws vary. This is education, not legal advice — if you are facing a legal situation, contact an attorney or legal aid organization.
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 <script>
 const DATA = {
@@ -1062,6 +823,7 @@ const DATA = {
   }
 };
 
+
 // Render all sections
 Object.entries(DATA).forEach(([key, section]) => {
   const grid = document.getElementById(`${key}-grid`);
@@ -1074,12 +836,9 @@ Object.entries(DATA).forEach(([key, section]) => {
     card.setAttribute('aria-label', guide.title);
     card.innerHTML = `
       <span class="guide-number">${String(i + 1).padStart(2, '0')}</span>
-      <div class="guide-title">${guide.title}</div>
-      <span class="guide-arrow">
-        Read Guide
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </span>`;
-    const open = () => openModal(section.label, guide);
+      <span class="guide-title">${guide.title}</span>
+      <span class="guide-arrow">Read Guide</span>`;
+    const open = () => openModal(section.label, guide, card);
     card.addEventListener('click', open);
     card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
     grid.appendChild(card);
@@ -1092,8 +851,10 @@ const modalTag = document.getElementById('modal-tag');
 const modalTitle = document.getElementById('modal-title');
 const modalSteps = document.getElementById('modal-steps');
 const closeBtn = document.getElementById('modal-close');
+let lastTrigger = null;
 
-function openModal(label, guide) {
+function openModal(label, guide, trigger) {
+  lastTrigger = trigger || null;
   modalTag.textContent = label;
   modalTitle.textContent = guide.title;
   modalSteps.innerHTML = guide.steps.map(s => `<li>${s}</li>`).join('');
@@ -1103,12 +864,28 @@ function openModal(label, guide) {
   closeBtn.focus();
 }
 function closeModal() {
+  if (!overlay.classList.contains('open')) return;
   overlay.classList.remove('open');
   document.body.style.overflow = '';
+  if (lastTrigger) lastTrigger.focus();
 }
 closeBtn.addEventListener('click', closeModal);
 overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Underline the section-nav link for the section in view
+(function () {
+  const links = document.querySelectorAll('.section-nav a');
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('.rights-section').forEach(s => io.observe(s));
+})();
 </script>
+<script src="site.js"></script>
 </body>
 </html>
